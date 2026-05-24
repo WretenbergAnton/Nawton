@@ -161,3 +161,4 @@ function buildEmailHtml({
     </html>
   `;
 }
+export const sendContact = sendContactForm;
