@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, Menu, X } from "lucide-react";
+import Link from "next/link";
 
 const services = [
   { label: "Websites", description: "Fast, modern websites" },
@@ -12,7 +13,7 @@ const services = [
 ];
 
 const links = [
-  { label: "About", href: "#about" },
+  { label: "About", href: "/about" },
   { label: "Services", href: "#services", dropdown: true },
   { label: "Work", href: "#portfolio" },
 ];
@@ -116,6 +117,14 @@ export default function Navbar() {
                     )}
                   </AnimatePresence>
                 </div>
+              ) : link.href.startsWith("/") ? (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  className="px-4 py-2 rounded-xl text-sm text-white/60 hover:text-white border border-transparent hover:border-white/15 transition-all duration-200"
+                >
+                  {link.label}
+                </Link>
               ) : (
                 <button
                   key={link.label}
