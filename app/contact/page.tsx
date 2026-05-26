@@ -46,7 +46,9 @@ export default function ContactPage() {
           <ArrowLeft size={15} className="group-hover:-translate-x-1 transition-transform duration-200" />
           Back
         </Link>
-        <span className="text-white font-semibold text-lg tracking-tight">Nawton</span>
+        <span style={{ fontFamily: "var(--font-grotesk)" }}>
+          <span className="text-xs font-bold bg-white text-[#080810] px-1.5 py-0.5 rounded leading-none">NT</span>
+        </span>
       </header>
 
       {/* Content */}
