@@ -68,8 +68,9 @@ export default function Navbar() {
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             style={{ fontFamily: "var(--font-grotesk)" }}
+            className="text-white font-semibold text-lg tracking-tight"
           >
-            <span className="text-xs font-bold bg-white text-[#080810] px-1.5 py-0.5 rounded leading-none">NT</span>
+            Nawton
           </button>
 
           {/* Desktop links */}
