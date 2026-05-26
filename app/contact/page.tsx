@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowLeft, ArrowRight, CheckCircle, Loader2 } from "lucide-react";
+import { ArrowLeft, ArrowRight, CheckCircle, Loader2, Globe } from "lucide-react";
 import Link from "next/link";
 import { sendContact } from "@/app/actions/contact";
 
@@ -46,9 +46,15 @@ export default function ContactPage() {
           <ArrowLeft size={15} className="group-hover:-translate-x-1 transition-transform duration-200" />
           Back
         </Link>
-        <span style={{ fontFamily: "var(--font-grotesk)" }}>
-          <span className="text-xs font-bold bg-white text-[#080810] px-1.5 py-0.5 rounded leading-none">NT</span>
-        </span>
+        <div className="flex flex-col items-start">
+          <div className="flex items-center gap-1.5">
+            <span style={{ fontFamily: "var(--font-script)" }} className="text-white text-2xl leading-none">
+              Nawton
+            </span>
+            <Globe size={15} className="text-white mb-0.5" />
+          </div>
+          <div className="w-full h-px bg-white/60 mt-0.5" />
+        </div>
       </header>
 
       {/* Content */}

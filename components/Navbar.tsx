@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, Menu, X } from "lucide-react";
+import { ChevronDown, Menu, X, Globe } from "lucide-react";
 import Link from "next/link";
 
 const services = [
@@ -67,9 +67,18 @@ export default function Navbar() {
           {/* Logo */}
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            style={{ fontFamily: "var(--font-grotesk)" }}
+            className="flex flex-col items-start group"
           >
-            <span className="text-xs font-bold bg-white text-[#080810] px-1.5 py-0.5 rounded leading-none">NT</span>
+            <div className="flex items-center gap-1.5">
+              <span
+                style={{ fontFamily: "var(--font-script)" }}
+                className="text-white text-2xl leading-none"
+              >
+                Nawton
+              </span>
+              <Globe size={15} className="text-white mb-0.5" />
+            </div>
+            <div className="w-full h-px bg-white/60 mt-0.5" />
           </button>
 
           {/* Desktop links */}
