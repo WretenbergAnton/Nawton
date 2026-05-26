@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, Globe } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
 const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
@@ -44,15 +44,9 @@ export default function AboutPage() {
           <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform duration-200" />
           Back
         </Link>
-        <div className="flex flex-col items-start">
-          <div className="flex items-center gap-1.5">
-            <span style={{ fontFamily: "var(--font-script)" }} className="text-[#111] text-2xl leading-none">
-              Nawton
-            </span>
-            <Globe size={15} className="text-[#111] mb-0.5" />
-          </div>
-          <div className="w-full h-px bg-black/40 mt-0.5" />
-        </div>
+        <span style={{ fontFamily: "var(--font-grotesk)" }}>
+          <span className="text-xs font-bold bg-[#111] text-white px-1.5 py-0.5 rounded leading-none">NT</span>
+        </span>
         <Link
           href="/contact"
           className="text-sm text-black/40 hover:text-black transition-colors duration-200"
