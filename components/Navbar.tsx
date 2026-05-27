@@ -15,7 +15,7 @@ const services = [
 const links = [
   { label: "About", href: "/about" },
   { label: "Services", href: "#services", dropdown: true },
-  { label: "Work", href: "#portfolio" },
+  { label: "Projects & Case Studies", href: "/work" },
 ];
 
 export default function Navbar() {
