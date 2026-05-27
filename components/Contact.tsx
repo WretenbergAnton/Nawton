@@ -7,17 +7,14 @@ import Link from "next/link";
 const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
 export default function Contact() {
-  const scrollTo = (id: string) =>
-    document.querySelector(id)?.scrollIntoView({ behavior: "smooth" });
-
   return (
     <section id="contact" className="px-4 md:px-6 pb-6 pt-4">
       <div className="grid grid-cols-1 md:grid-cols-[2fr_3fr] gap-3">
 
         {/* Left panel — Portfolio */}
+        <Link href="/work" className="block">
         <motion.div
           className="relative rounded-3xl bg-[#2d1f6e] p-8 md:p-10 flex flex-col min-h-[460px] cursor-pointer group overflow-hidden"
-          onClick={() => scrollTo("#portfolio")}
           initial={{ opacity: 0, y: 32 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -41,6 +38,7 @@ export default function Contact() {
             </p>
           </div>
         </motion.div>
+        </Link>
 
         {/* Right panel — CTA → /contact */}
         <Link href="/contact" className="block">
