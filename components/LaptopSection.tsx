@@ -1,10 +1,11 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function LaptopSection() {
   const heroRef  = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
     const hero  = heroRef.current;
@@ -17,6 +18,7 @@ export default function LaptopSection() {
 
     let rafId = 0;
     let pendingTime = -1;
+    let isReady = false;
 
     function flush() {
       if (video && pendingTime >= 0) {
@@ -27,7 +29,7 @@ export default function LaptopSection() {
     }
 
     function onScroll() {
-      if (!hero || !video?.duration) return;
+      if (!isReady || !hero || !video?.duration) return;
       const rect = hero.getBoundingClientRect();
       const total = hero.offsetHeight - window.innerHeight;
       const p = clamp(-rect.top / total, 0, 1);
@@ -35,13 +37,26 @@ export default function LaptopSection() {
       if (!rafId) rafId = requestAnimationFrame(flush);
     }
 
+    function onReady() {
+      isReady = true;
+      setReady(true);
+      onScroll();
+    }
+
+    // Already buffered (e.g. cached)
+    if (video.readyState >= 4) {
+      onReady();
+    } else {
+      video.addEventListener("canplaythrough", onReady, { once: true });
+    }
+
     window.addEventListener("scroll", onScroll, { passive: true });
     video.addEventListener("loadedmetadata", onScroll);
-    onScroll();
 
     return () => {
       window.removeEventListener("scroll", onScroll);
       video.removeEventListener("loadedmetadata", onScroll);
+      video.removeEventListener("canplaythrough", onReady);
       cancelAnimationFrame(rafId);
     };
   }, []);
@@ -54,6 +69,18 @@ export default function LaptopSection() {
         background: "#000",
       }}>
 
+        {!ready && (
+          <div style={{
+            position: "absolute", zIndex: 20,
+            display: "flex", flexDirection: "column", alignItems: "center", gap: 14,
+          }}>
+            <div className="ls-spinner" />
+            <span style={{ fontSize: "0.7rem", letterSpacing: "0.18em", color: "rgba(255,255,255,0.3)", textTransform: "uppercase" }}>
+              Loading
+            </span>
+          </div>
+        )}
+
         <video
           ref={videoRef}
           src="/newlaptop.mp4"
@@ -65,6 +92,8 @@ export default function LaptopSection() {
             maxWidth: "clamp(280px, 72vw, 800px)",
             height: "auto",
             display: "block",
+            opacity: ready ? 1 : 0,
+            transition: "opacity 0.6s ease",
           }}
         />
 

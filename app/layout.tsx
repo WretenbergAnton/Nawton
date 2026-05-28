@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Space_Grotesk } from "next/font/google";
 import "./globals.css";
+import LoadingScreen from "@/components/LoadingScreen";
 
 const geist = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const grotesk = Space_Grotesk({ variable: "--font-grotesk", subsets: ["latin"], weight: ["400", "500", "600", "700"] });
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${geist.variable} ${grotesk.variable} antialiased`}>
+    <html lang="en" className={`${geist.variable} ${grotesk.variable} antialiased`} data-scroll-behavior="smooth">
       <body className="bg-[#080810] text-white overflow-x-hidden">
         {/* Ambient background orbs */}
         <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
@@ -20,6 +21,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div className="absolute top-[40%] right-[-15%] w-[500px] h-[500px] rounded-full bg-indigo-900/15 blur-[100px]" />
           <div className="absolute bottom-[10%] left-[20%] w-[400px] h-[400px] rounded-full bg-purple-900/10 blur-[100px]" />
         </div>
+        <LoadingScreen />
         <div className="relative z-10">
           {children}
         </div>
