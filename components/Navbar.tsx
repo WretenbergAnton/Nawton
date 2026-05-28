@@ -15,7 +15,7 @@ const services = [
 const links = [
   { label: "About", href: "/about" },
   { label: "Services", href: "#services", dropdown: true },
-  { label: "Work", href: "#portfolio" },
+  { label: "Projects & Case Studies", href: "/work" },
 ];
 
 export default function Navbar() {
@@ -67,6 +67,7 @@ export default function Navbar() {
           {/* Logo */}
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            style={{ fontFamily: "var(--font-grotesk)" }}
             className="text-white font-semibold text-lg tracking-tight"
           >
             Nawton
