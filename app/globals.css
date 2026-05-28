@@ -1,9 +1,5 @@
 @import "tailwindcss";
 
-html {
-  scroll-behavior: smooth;
-}
-
 body {
   background: #080810;
   color: #ffffff;
@@ -24,10 +20,6 @@ body::after {
   background-size: 128px 128px;
 }
 
-/* Smooth spring scroll */
-@media (prefers-reduced-motion: no-preference) {
-  :root { scroll-behavior: smooth; }
-}
 
 ::selection {
   background: rgba(139, 92, 246, 0.25);

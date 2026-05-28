@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${geist.variable} ${grotesk.variable} antialiased`}>
+    <html lang="en" className={`${geist.variable} ${grotesk.variable} antialiased`} data-scroll-behavior="smooth">
       <body className="bg-[#080810] text-white overflow-x-hidden">
         {/* Ambient background orbs */}
         <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
