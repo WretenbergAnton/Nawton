@@ -31,6 +31,17 @@ body::after {
 ::-webkit-scrollbar-thumb { background: #2a2a3a; border-radius: 2px; }
 
 /* ── LAPTOP SECTION ── */
+@keyframes ls-spin {
+  to { transform: rotate(360deg); }
+}
+.ls-spinner {
+  width: 28px; height: 28px;
+  border: 2px solid rgba(255,255,255,0.1);
+  border-top-color: rgba(255,255,255,0.45);
+  border-radius: 50%;
+  animation: ls-spin 0.75s linear infinite;
+}
+
 :root {
   --lw: 500px;
   --ld: 330px;
