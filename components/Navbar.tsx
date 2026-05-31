@@ -67,10 +67,9 @@ export default function Navbar() {
           {/* Logo */}
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            style={{ fontFamily: "var(--font-grotesk)" }}
-            className="text-white font-semibold text-lg tracking-tight"
+            className="flex items-center"
           >
-            Nawton
+            <img src="/logo.png" alt="Nawton" className="h-16 w-auto" />
           </button>
 
           {/* Desktop links */}
