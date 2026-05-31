@@ -69,7 +69,7 @@ export default function Navbar() {
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             className="flex items-center"
           >
-            <img src="/logo.png" alt="Nawton" className="h-10 w-auto" />
+            <img src="/logo.png" alt="Nawton" className="h-16 w-auto" />
           </button>
 
           {/* Desktop links */}
