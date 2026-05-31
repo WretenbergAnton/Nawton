@@ -17,6 +17,7 @@ const steps = [
     tags: ["Kickoff call", "User research", "Strategy brief"],
     color: "from-violet-500/20 to-indigo-500/10",
     accent: "#8b5cf6",
+    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=900&q=80&fit=crop",
   },
   {
     number: "02",
@@ -27,6 +28,7 @@ const steps = [
     tags: ["Wireframes", "UI design", "Brand identity"],
     color: "from-blue-500/20 to-cyan-500/10",
     accent: "#3b82f6",
+    image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=900&q=80&fit=crop",
   },
   {
     number: "03",
@@ -37,6 +39,7 @@ const steps = [
     tags: ["Next.js", "React Native", "Performance"],
     color: "from-emerald-500/20 to-teal-500/10",
     accent: "#10b981",
+    image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=900&q=80&fit=crop",
   },
   {
     number: "04",
@@ -47,6 +50,7 @@ const steps = [
     tags: ["QA testing", "Cross-device", "Performance audit"],
     color: "from-amber-500/20 to-orange-500/10",
     accent: "#f59e0b",
+    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=900&q=80&fit=crop",
   },
   {
     number: "05",
@@ -57,10 +61,11 @@ const steps = [
     tags: ["Deployment", "Monitoring", "Ongoing support"],
     color: "from-rose-500/20 to-pink-500/10",
     accent: "#f43f5e",
+    image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=900&q=80&fit=crop",
   },
 ];
 
-function StepCard({ step, index }: { step: typeof steps[0]; index: number }) {
+function StepCard({ step, index }: { step: (typeof steps)[0]; index: number }) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -111,10 +116,20 @@ function StepCard({ step, index }: { step: typeof steps[0]; index: number }) {
           {step.title}
         </h2>
 
-        <div className={`w-full rounded-2xl bg-gradient-to-br ${step.color} border border-white/8 p-8 md:p-10 mb-6`}>
-          <p className="text-white/70 text-base md:text-lg leading-relaxed">
-            {step.description}
-          </p>
+        <div className={`w-full rounded-2xl bg-gradient-to-br ${step.color} border border-white/8 overflow-hidden mb-6`}>
+          <div className="relative w-full h-56 md:h-72 overflow-hidden">
+            <img
+              src={step.image}
+              alt={step.title}
+              className="w-full h-full object-cover opacity-80"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+          </div>
+          <div className="p-8 md:p-10">
+            <p className="text-white/70 text-base md:text-lg leading-relaxed">
+              {step.description}
+            </p>
+          </div>
         </div>
 
         <div className="flex flex-wrap gap-2">
