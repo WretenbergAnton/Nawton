@@ -83,8 +83,7 @@ export default function Hero() {
                 transition={{ duration: 0.7, delay: 0.5, ease: [0.33, 1, 0.68, 1] as [number,number,number,number] }}
               >
                 <a
-                  href="#contact"
-                  onClick={(e) => { e.preventDefault(); document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" }); }}
+                  href="/contact"
                   className="bg-white text-black font-medium text-sm px-7 py-3.5 rounded-full hover:bg-white/90 transition-colors duration-200"
                 >
                   Contact us
