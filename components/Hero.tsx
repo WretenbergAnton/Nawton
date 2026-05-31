@@ -89,8 +89,7 @@ export default function Hero() {
                   Contact us
                 </a>
                 <a
-                  href="#services"
-                  onClick={(e) => { e.preventDefault(); document.querySelector("#services")?.scrollIntoView({ behavior: "smooth" }); }}
+                  href="/how-we-help"
                   className="border border-white/20 text-white font-medium text-sm px-7 py-3.5 rounded-full hover:border-white/50 transition-colors duration-200"
                 >
                   How we can help
