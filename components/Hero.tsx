@@ -42,68 +42,84 @@ export default function Hero() {
   return (
     <>
       {/* ── INTRO ── */}
-      <section ref={containerRef} className="relative min-h-screen pt-36 pb-28 px-6 md:px-16 flex flex-col justify-center">
-        <motion.div style={{ y, opacity }} className="max-w-5xl mx-auto w-full">
+      <section ref={containerRef} className="relative min-h-screen px-6 md:px-16 flex items-center overflow-hidden">
+        <motion.div style={{ y, opacity }} className="max-w-7xl mx-auto w-full">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
 
-          <motion.p
-            className="text-xs text-white/30 tracking-[0.25em] uppercase mb-8"
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1, ease: [0.33, 1, 0.68, 1] }}
-          >
-            · Design · Web · Development ·
-          </motion.p>
-
-          <motion.h1
-            className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.08] mb-20 max-w-3xl"
-            initial={{ opacity: 0, y: 32 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.2, ease: [0.33, 1, 0.68, 1] }}
-          >
-            We build digital products that make your vision impossible to ignore.
-          </motion.h1>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-            {/* Image card */}
-            <motion.div
-              className="w-full aspect-[4/3] rounded-3xl overflow-hidden border border-white/8 bg-white/3 backdrop-blur-sm relative"
-              initial={{ opacity: 0, y: 24, scale: 0.97 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 0.9, delay: 0.3, ease: [0.33, 1, 0.68, 1] }}
-              whileHover={{ scale: 1.02 }}
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-violet-500/10 via-transparent to-indigo-500/10" />
-              <div className="absolute bottom-6 left-6 right-6">
-                <div className="h-px bg-white/10 mb-4" />
-                <p className="text-xs text-white/30 tracking-widest uppercase">Anton & Nawid — Sundsvall</p>
-              </div>
-            </motion.div>
-
-            {/* Text */}
-            <motion.div
-              className="flex flex-col gap-6"
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, delay: 0.4, ease: [0.33, 1, 0.68, 1] }}
-            >
-              <p className="text-white/60 text-base md:text-lg leading-relaxed">
-                Looking great is a must — and we've made it our craft. But the companies that actually build momentum are the ones that make people feel what they stand for.
-              </p>
-              <p className="text-white/60 text-base md:text-lg leading-relaxed">
-                The founders we work with share the same challenge: there's a gap between where the company is going and what people actually see and experience.{" "}
-                <span className="text-white/35 italic">Let's close that gap.</span>
-              </p>
-              <motion.a
-                href="#contact"
-                onClick={(e) => { e.preventDefault(); document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" }); }}
-                className="inline-flex items-center gap-2 mt-2 text-sm text-white/50 hover:text-white transition-colors duration-300 group w-fit"
-                whileHover={{ x: 4 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            {/* Left – text */}
+            <div className="flex flex-col gap-8 z-10">
+              <motion.p
+                className="text-xs text-white/30 tracking-[0.25em] uppercase"
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.1, ease: [0.33, 1, 0.68, 1] as [number,number,number,number] }}
               >
-                Start a project
-                <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
-              </motion.a>
+                · Design · Web · Development ·
+              </motion.p>
+
+              <motion.h1
+                className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.06]"
+                initial={{ opacity: 0, y: 32 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.9, delay: 0.2, ease: [0.33, 1, 0.68, 1] as [number,number,number,number] }}
+              >
+                Web agency <br />
+                <span className="italic font-light">in Sundsvall</span>
+              </motion.h1>
+
+              <motion.p
+                className="text-white/50 text-base md:text-lg leading-relaxed max-w-md"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.35, ease: [0.33, 1, 0.68, 1] as [number,number,number,number] }}
+              >
+                We help brands grow digitally. We combine strategy, creativity and technology to build solutions that drive real results.
+              </motion.p>
+
+              <motion.div
+                className="flex gap-4 flex-wrap"
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.5, ease: [0.33, 1, 0.68, 1] as [number,number,number,number] }}
+              >
+                <a
+                  href="#contact"
+                  onClick={(e) => { e.preventDefault(); document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" }); }}
+                  className="bg-white text-black font-medium text-sm px-7 py-3.5 rounded-full hover:bg-white/90 transition-colors duration-200"
+                >
+                  Contact us
+                </a>
+                <a
+                  href="#services"
+                  onClick={(e) => { e.preventDefault(); document.querySelector("#services")?.scrollIntoView({ behavior: "smooth" }); }}
+                  className="border border-white/20 text-white font-medium text-sm px-7 py-3.5 rounded-full hover:border-white/50 transition-colors duration-200"
+                >
+                  How we can help
+                </a>
+              </motion.div>
+            </div>
+
+            {/* Right – logo decorative */}
+            <motion.div
+              className="flex items-center justify-center relative"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1.1, delay: 0.3, ease: [0.33, 1, 0.68, 1] as [number,number,number,number] }}
+            >
+              {/* Desktop: full opacity */}
+              <img
+                src="/logo.png"
+                alt="Nawton"
+                className="hidden md:block w-full max-w-sm lg:max-w-md select-none"
+              />
+              {/* Mobile: below text, low opacity */}
+              <img
+                src="/logo.png"
+                alt=""
+                className="md:hidden w-64 opacity-10 select-none mx-auto mt-4"
+              />
             </motion.div>
+
           </div>
         </motion.div>
       </section>
