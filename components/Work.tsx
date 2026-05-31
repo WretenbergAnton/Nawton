@@ -7,13 +7,14 @@ import { ArrowUpRight } from "lucide-react";
 const projects = [
   {
     id: 1,
-    name: "Restaurang Sundsvall",
-    description: "A modern website with integrated booking system and digital menu for a local restaurant.",
+    name: "La Trattoria",
+    description: "A modern website for an authentic Italian restaurant in Åre — with digital menu, takeaway info and a warm, inviting design that reflects the food.",
     tags: ["Web Design", "Next.js", "Branding"],
-    location: "Sundsvall, Sweden",
+    location: "Åre, Sweden",
     color: "rgba(120, 53, 15, 0.55)",
     glow: "rgba(180, 83, 9, 0.12)",
-    url: "#",
+    url: "https://trattoriaa.netlify.app/",
+    images: ["/website1.png", "/website1-2.png", "/website1-3.png"],
   },
   {
     id: 2,
@@ -24,6 +25,7 @@ const projects = [
     color: "rgba(15, 40, 80, 0.55)",
     glow: "rgba(29, 78, 160, 0.12)",
     url: "#",
+    images: [] as string[],
   },
   {
     id: 3,
@@ -34,6 +36,7 @@ const projects = [
     color: "rgba(6, 40, 22, 0.55)",
     glow: "rgba(16, 120, 60, 0.12)",
     url: "#",
+    images: [] as string[],
   },
   {
     id: 4,
@@ -44,6 +47,7 @@ const projects = [
     color: "rgba(30, 12, 60, 0.55)",
     glow: "rgba(109, 40, 217, 0.12)",
     url: "#",
+    images: [] as string[],
   },
 ];
 
@@ -130,16 +134,20 @@ function ProjectRow({ project, index }: { project: typeof projects[0]; index: nu
                 animate={{ opacity: 1, y: 0, transition: { delay: 0.12, ...ENTER } }}
                 exit={{ opacity: 0, y: 4, transition: { duration: 0.15 } }}
               >
-                <a
-                  href={project.url}
-                  onClick={(e) => e.stopPropagation()}
-                  className="flex items-center gap-1.5 text-sm text-white/70 hover:text-white border-b border-white/25 hover:border-white pb-0.5 transition-colors duration-200"
-                >
-                  View Case Study <ArrowUpRight size={13} />
-                </a>
+                {project.url !== "#" && (
+                  <a
+                    href={project.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    className="flex items-center gap-1.5 text-sm text-white/70 hover:text-white border-b border-white/25 hover:border-white pb-0.5 transition-colors duration-200"
+                  >
+                    Visit site <ArrowUpRight size={13} />
+                  </a>
+                )}
               </motion.div>
 
-              {/* Screenshot placeholders */}
+              {/* Screenshots */}
               <div className="grid grid-cols-3 gap-3 pb-9">
                 {[0, 1, 2].map((i) => (
                   <motion.div
@@ -154,11 +162,23 @@ function ProjectRow({ project, index }: { project: typeof projects[0]; index: nu
                       opacity: 0, y: 8, scale: 0.98,
                       transition: { duration: 0.18 },
                     }}
-                    style={{
-                      background: "linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.01) 100%)",
-                      backdropFilter: "blur(10px)",
-                    }}
-                  />
+                  >
+                    {project.images[i] ? (
+                      <img
+                        src={project.images[i]}
+                        alt={`${project.name} screenshot ${i + 1}`}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <div
+                        className="w-full h-full"
+                        style={{
+                          background: "linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.01) 100%)",
+                          backdropFilter: "blur(10px)",
+                        }}
+                      />
+                    )}
+                  </motion.div>
                 ))}
               </div>
             </motion.div>
