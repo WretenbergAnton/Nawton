@@ -212,3 +212,171 @@ npm install framer-motion lucide-react resend
 MILJÖVARIABEL i .env.local:
 RESEND_API_KEY=din_nyckel_här
 ```
+
+---
+
+---
+
+# Projektdokumentation – Nuvarande status
+
+## Teknikstack
+
+| Område | Teknik |
+|---|---|
+| Framework | Next.js 16.2.6 (App Router) |
+| UI-bibliotek | React 19.2.4 |
+| Språk | TypeScript 5 |
+| Styling | Tailwind CSS 4 + PostCSS |
+| Animationer | Framer Motion 12 |
+| Ikoner | Lucide React |
+| Validering | Zod 4 |
+| E-post | Resend (installerat, ej aktiverat) |
+
+---
+
+## Sidor & Routing
+
+### `/` — Startsida (`app/page.tsx`)
+Sammansatt av fyra komponenter i ordning: Navbar → Hero → Work → Contact. En klassisk "one-scroll" landing page.
+
+### `/about` — Om oss (`app/about/page.tsx`)
+Presenterar grundarna Anton Wretenberg och Nawid, företagets värderingar och tre kärnprinciper: *Craft over speed*, *Honest communication*, *Long-term thinking*. Avslutas med en CTA-knapp till kontaktsidan och en footer med sociala länkar.
+
+### `/contact` — Kontakt (`app/contact/page.tsx`)
+Fullständigt kontaktformulär med fälten: Namn, E-post, Projekttyp (Website / Web App / Mobile App / SEO / Other), Budget (Under 10k / 10–30k / 30–50k / 50k+) och Meddelande. Valideras på klient- och serversidan via Zod. Skickar via en Server Action.
+
+### `/work` — Projekt (`app/work/page.tsx`)
+Visar fyra case studies i ett tvåkolumns-grid: Restaurang Sundsvall, Mode E-commerce, Bokningsapp och Fastighetsbyrån. Varje kort har taggar, plats och år.
+
+---
+
+## Komponenter
+
+### `components/Navbar.tsx`
+Sticky navbar som blir halvtransparent med blur-effekt vid scroll. Desktop: logotyp, länklista med dropdown för tjänster (4 alternativ med beskrivningar), och en "Kontakta oss"-knapp. Mobil: hamburger-meny animerad med Framer Motion.
+
+### `components/Hero.tsx`
+Huvudsektionen på startsidan. Parallax-scroll med `useScroll` + `useTransform`. Stor headline, bildkort till vänster och text till höger, följt av ett tjänsteglas-kort med fyra tjänster (Strategy & Discovery / Design & Brand / Web Development / Launch & Grow) med staggered animationer.
+
+### `components/Work.tsx`
+Portfoliosektionen på startsidan. Varje projekt visas som en rad med hover-interaktion: bakgrundsfärgen ändras, en radial glow-effekt dyker upp, och en utfällbar panel visas med länk till case study och screenshot.
+
+### `components/Contact.tsx`
+CTA-sektion med två kort sida vid sida — ett för portfolio och ett för kontaktformulär. Stor rubrik "Start a Project", hover-animationer och footer med sociala länkar.
+
+### `components/LoadingScreen.tsx`
+Heltäckande laddningsskärm (z-index 9999) som visar logotypen och en progress-bar från 0–100%. Tonas ut när sidan är laddad.
+
+### `components/CookieBanner.tsx`
+Cookie-consent-banner nere till höger. Sparar val i `localStorage`. Accept/Decline-knappar med Framer Motion fade-animation.
+
+---
+
+## Server Actions & Backend
+
+### `app/actions/contact.ts`
+Enda server-side logiken i projektet. Tar emot `FormData`, validerar name, email, projectType och message, returnerar `{ success: boolean, error?: string }`.
+
+**OBS:** Resend-integrationen är utkommenterad — e-post skickas inte just nu, bara `console.log`. Lägg till `RESEND_API_KEY` i `.env.local` och aktivera koden för att e-post ska fungera.
+
+---
+
+## Styling & Design
+
+**`app/globals.css`** innehåller:
+- Bakgrundsfärg `#080810` (nästintill svart med blå ton)
+- Grain-overlay i SVG-format (0.035 opacitet) för filmisk textur
+- Anpassad scrollbar (3px, mörkgrå)
+- Markeringsfärg: lila (`rgba(139, 92, 246, 0.25)`)
+- Utförlig CSS för en 3D-laptop-animation med tangentbord, trackpad och glödande skärm
+
+**Fonter:** Geist (brödtext) + Space Grotesk (display/rubriker), laddas via `next/font`.
+
+**Ambient orbs:** Tre suddigade gradientcirklar (violet/indigo/lila) i root layout som ger djup åt bakgrunden.
+
+---
+
+## Miljövariabler
+
+Inga `.env`-filer finns i repot. Lägg till en `.env.local` med:
+
+```
+RESEND_API_KEY=din_nyckel_här
+```
+
+---
+
+## Kända brister
+
+- **E-post fungerar inte** — Resend är installerat men utkommenterat i `app/actions/contact.ts`
+- **Inget CMS** — Alla projekt och texter är hårdkodade i komponenterna
+- **Inga analyser** — Ingen tracking (Google Analytics, Plausible, etc.)
+- **Ingen sitemap eller robots.txt** — Svag SEO-grund
+- **Inga unika meta-taggar per sida** — Bara root layout har metadata
+- **Projektbilder** saknar Next.js `<Image>`-optimering på `/work`-sidan
+- **Ingen 404-sida** — Ingen custom `not-found.tsx` finns
+
+---
+
+## Förbättringsförslag
+
+### Akut (snabba vinster)
+
+**1. Aktivera e-post**
+Lägg till `RESEND_API_KEY` i `.env.local` och aktivera Resend-koden i `app/actions/contact.ts`. Utan detta missas alla kontaktförfrågningar.
+
+**2. SEO-grund**
+Lägg till unika `title` och `description` i varje sidas `export const metadata` (`/about`, `/contact`, `/work`). Skapa `app/sitemap.ts` och `app/robots.ts` — Next.js App Router har inbyggt stöd för detta.
+
+**3. Bildoptimering**
+Ersätt `<img>`-taggar med Next.js `<Image>` på projektkorten i `/work` för automatisk lazy loading, WebP-konvertering och rätt storlekar.
+
+**4. Custom 404-sida**
+Skapa `app/not-found.tsx` med en stilren sida som matchar resten av sajten.
+
+---
+
+### Design & UX
+
+**5. Formulär-feedback**
+Lägg till en "skickas..."-spinner på Skicka-knappen medan Server Action körs. Nu finns ingen visuell återkoppling under väntetiden.
+
+**6. Bekräftelse-e-post till kunden**
+När någon skickar kontaktformuläret bör de få ett automatiskt bekräftelsemejl via Resend.
+
+**7. Scroll-indikator på startsidan**
+En liten animerad pil längst ner i Hero-sektionen hjälper besökare att förstå att det finns mer innehåll under.
+
+---
+
+## Idéer för nya funktioner
+
+### Blogg / Insikter (`/blog`)
+Skriv artiklar om webbutveckling, design-trender och case studies. Lockar organisk SEO-trafik och positionerar er som experter. Kan byggas med MDX-filer — ingen databas behövs.
+
+### Dedikerade case study-sidor (`/work/[slug]`)
+Varje projekt får en egen sida med fullständig beskrivning, process, resultat och skärmdumpar/video. Nu är projekten bara kort — de förtjänar sin egna berättelse.
+
+### Testimonials / Omdömen
+Lägg till kundcitat på startsidan eller `/about`. Socialt bevis är ett av de starkaste säljargumenten för en liten byrå.
+
+### Prispaket-sida (`/pricing`)
+En tydlig prissättningssida med tre nivåer (t.ex. Starter / Growth / Enterprise) skapar förtroende och kvalificerar potentiella kunder redan innan de kontaktar er.
+
+### FAQ-sektion
+Vanliga frågor om process, tid, pris och tekniker. Sparar tid och hjälper besökare att bestämma sig. Kan läggas på kontaktsidan eller som en egen sida.
+
+### Kalenderbokning
+Integrera Cal.com eller Calendly så att besökare kan boka ett första möte direkt — utan att skicka formulär och vänta på svar.
+
+### Newsletter / E-postlista
+En enkel "Håll dig uppdaterad"-prenumeration med Resend (redan installerat). Bygg en lista av potentiella kunder som ännu inte är redo att köpa.
+
+### "Hur vi arbetar"-sektion
+En visuell tidslinje som visar er process steg för steg (Discovery → Design → Bygg → Lansering → Support). Minskar osäkerhet hos kunden och säljer in ert tillvägagångssätt.
+
+### Flerspråksstöd (sv/en)
+Next.js App Router har inbyggt i18n-stöd. En engelsk version öppnar möjligheten att ta internationella kunder.
+
+### Analytics
+Lägg till Plausible Analytics (GDPR-vänligt, ingen cookie-banner behövs) för att se vilka sidor som fungerar och var besökare hoppar av.
