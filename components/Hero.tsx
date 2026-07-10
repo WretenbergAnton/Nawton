@@ -89,7 +89,7 @@ export default function Hero() {
                   Contact us
                 </a>
                 <a
-                  href="/how-we-help"
+                  href="#services"
                   className="border border-white/20 text-white font-medium text-sm px-7 py-3.5 rounded-full hover:border-white/50 transition-colors duration-200"
                 >
                   How we can help
@@ -97,24 +97,32 @@ export default function Hero() {
               </motion.div>
             </div>
 
-            {/* Right – logo decorative */}
+            {/* Right – Nawton logo */}
             <motion.div
               className="flex items-center justify-center relative"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1.1, delay: 0.3, ease: [0.33, 1, 0.68, 1] as [number,number,number,number] }}
             >
-              {/* Desktop: full opacity */}
-              <img
+              {/* Glow behind logo */}
+              <div className="absolute inset-0 bg-violet-500/10 blur-3xl rounded-full pointer-events-none" />
+
+              {/* Desktop */}
+              <motion.img
                 src="/logo.png"
                 alt="Nawton"
-                className="hidden md:block w-full max-w-sm lg:max-w-md select-none"
+                animate={{ y: [0, -12, 0] }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                className="hidden md:block w-full max-w-sm lg:max-w-md select-none relative"
+                style={{ mixBlendMode: "screen" }}
               />
-              {/* Mobile: below text, low opacity */}
+
+              {/* Mobile */}
               <img
                 src="/logo.png"
                 alt=""
-                className="md:hidden w-64 opacity-10 select-none mx-auto mt-4"
+                className="md:hidden w-56 select-none mx-auto mt-4 opacity-20"
+                style={{ mixBlendMode: "screen" }}
               />
             </motion.div>
 
