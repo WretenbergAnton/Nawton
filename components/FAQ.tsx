@@ -3,41 +3,9 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 const EASE: [number, number, number, number] = [0.33, 1, 0.68, 1];
-
-const faqs = [
-  {
-    question: "How long does a project take?",
-    answer:
-      "It depends on scope. A website typically takes 3–6 weeks from kickoff to launch. A web app or mobile app takes longer — usually 2–4 months. We'll give you a clear timeline before we start.",
-  },
-  {
-    question: "What does it cost?",
-    answer:
-      "A simple website starts around 15 000 SEK. Web apps and more complex projects are priced based on scope. We're always transparent about pricing — no hidden fees, no surprises.",
-  },
-  {
-    question: "Do you work with clients outside Sundsvall?",
-    answer:
-      "Absolutely. Most of our work is done remotely. We communicate clearly via video calls, shared docs, and regular updates — wherever you are.",
-  },
-  {
-    question: "What do you need from us to get started?",
-    answer:
-      "Just a conversation. Tell us about your project, your goals, and your timeline. We'll take it from there and walk you through exactly what we need.",
-  },
-  {
-    question: "Do you offer ongoing support after launch?",
-    answer:
-      "Yes. We stay available after launch for bug fixes, updates, and improvements. Many of our clients work with us on an ongoing basis — we become a long-term partner, not just a one-off vendor.",
-  },
-  {
-    question: "Can you redesign an existing website?",
-    answer:
-      "Yes. We work with redesigns regularly. We'll audit what you have, identify what's working and what isn't, and rebuild it properly.",
-  },
-];
 
 function FAQItem({
   question,
@@ -102,6 +70,7 @@ function FAQItem({
 }
 
 export default function FAQ() {
+  const { t } = useLanguage();
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
@@ -114,11 +83,11 @@ export default function FAQ() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: EASE }}
         >
-          FAQ
+          {t.faq.title}
         </motion.h2>
 
         <div className="flex flex-col gap-1">
-          {faqs.map((faq, i) => (
+          {t.faq.items.map((faq, i) => (
             <FAQItem
               key={i}
               question={faq.question}

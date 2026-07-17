@@ -2,7 +2,9 @@
 
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import { X, Send, MessageCircle } from "lucide-react";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 type Message = {
   role: "user" | "assistant";
@@ -12,16 +14,28 @@ type Message = {
 const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
 export default function ChatWidget() {
+  const { t } = useLanguage();
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     {
       role: "assistant",
-      content: "Hi! I'm the Nawton assistant. How can I help you today?",
+      content: t.chatWidget.greeting,
     },
   ]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
+
+  // Keep the initial greeting in sync if the language changes before the
+  // visitor has sent a message. Adjusted during render (not in an effect)
+  // per https://react.dev/learn/you-might-not-need-an-effect.
+  const [lastGreeting, setLastGreeting] = useState(t.chatWidget.greeting);
+  if (t.chatWidget.greeting !== lastGreeting) {
+    setLastGreeting(t.chatWidget.greeting);
+    if (messages.length === 1 && messages[0].role === "assistant") {
+      setMessages([{ role: "assistant", content: t.chatWidget.greeting }]);
+    }
+  }
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -44,9 +58,9 @@ export default function ChatWidget() {
         body: JSON.stringify({ messages: next }),
       });
       const data = await res.json();
-      setMessages([...next, { role: "assistant", content: data.message || data.error || "Sorry, something went wrong." }]);
+      setMessages([...next, { role: "assistant", content: data.message || data.error || t.chatWidget.genericError }]);
     } catch {
-      setMessages([...next, { role: "assistant", content: "Sorry, I couldn't connect right now. Please try again." }]);
+      setMessages([...next, { role: "assistant", content: t.chatWidget.connectionError }]);
     } finally {
       setLoading(false);
     }
@@ -68,11 +82,11 @@ export default function ChatWidget() {
             <div className="flex items-center justify-between px-5 py-4 border-b border-white/[0.07]">
               <div className="flex items-center gap-3">
                 <div className="w-7 h-7 rounded-full bg-violet-600 flex items-center justify-center">
-                  <img src="/logo.png" alt="" className="w-5 h-5" style={{ mixBlendMode: "screen" }} />
+                  <Image src="/logo.png" alt="" width={20} height={20} className="w-5 h-5" />
                 </div>
                 <div>
                   <p className="text-sm font-medium text-white">Nawton</p>
-                  <p className="text-xs text-white/40">AI Assistant</p>
+                  <p className="text-xs text-white/40">{t.chatWidget.subtitle}</p>
                 </div>
               </div>
               <button onClick={() => setOpen(false)} className="text-white/40 hover:text-white transition-colors">
@@ -118,7 +132,7 @@ export default function ChatWidget() {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && !e.shiftKey && send()}
-                placeholder="Ask something..."
+                placeholder={t.chatWidget.placeholder}
                 className="flex-1 bg-white/[0.05] border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder:text-white/30 outline-none focus:border-violet-500/50 transition-colors"
               />
               <button

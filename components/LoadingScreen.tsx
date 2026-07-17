@@ -39,6 +39,7 @@ export default function LoadingScreen() {
 
   return (
     <div
+      aria-hidden="true"
       onTransitionEnd={() => { if (fading) setGone(true); }}
       style={{
         position: "fixed", inset: 0, zIndex: 9999,

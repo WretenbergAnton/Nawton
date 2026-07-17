@@ -1,10 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowLeft, ArrowRight, CheckCircle, Loader2 } from "lucide-react";
+import { ArrowRight, CheckCircle, Loader2 } from "lucide-react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { sendContact } from "@/app/actions/contact";
+import { CONTACT_EMAIL, SOCIAL_LINKS } from "@/lib/site-config";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
+import PageHeader from "@/components/PageHeader";
 
 const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
@@ -14,10 +18,20 @@ const inputBase =
 const selectBase =
   "w-full bg-transparent border-b border-white/15 focus:border-white/50 outline-none text-base py-4 transition-colors duration-200 appearance-none cursor-pointer text-white";
 
-export default function ContactPage() {
+function ContactForm() {
+  const { t } = useLanguage();
+  const searchParams = useSearchParams();
+  const isAudit = searchParams.get("type") === "granskning";
+
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
+  const [projectType, setProjectType] = useState(isAudit ? "Granskning" : "");
+
+  const directLinks = [
+    { label: t.contact.social.linkedin, href: SOCIAL_LINKS.linkedin },
+    { label: t.contact.social.instagram, href: SOCIAL_LINKS.instagram },
+  ].filter((l) => l.href);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -26,7 +40,7 @@ export default function ContactPage() {
     const result = await sendContact(new FormData(e.currentTarget));
     setLoading(false);
     if (result.success) setSuccess(true);
-    else setError(result.error ?? "Something went wrong.");
+    else setError(result.error ?? t.contactPage.genericError);
   };
 
   return (
@@ -37,19 +51,9 @@ export default function ContactPage() {
         <div className="absolute bottom-[20%] left-[-5%] w-[400px] h-[400px] rounded-full bg-indigo-900/20 blur-[100px]" />
       </div>
 
-      {/* Nav */}
-      <header className="relative z-10 flex items-center justify-between px-6 md:px-16 py-6">
-        <Link
-          href="/"
-          className="flex items-center gap-2 text-sm text-white/40 hover:text-white transition-colors duration-200 group"
-        >
-          <ArrowLeft size={15} className="group-hover:-translate-x-1 transition-transform duration-200" />
-          Back
-        </Link>
-        <span style={{ fontFamily: "var(--font-grotesk)" }} className="text-white font-semibold text-lg tracking-tight">
-          Nawton
-        </span>
-      </header>
+      <div className="relative z-10">
+        <PageHeader showContactLink={false} />
+      </div>
 
       {/* Content */}
       <main className="relative z-10 flex-1 flex items-center px-6 md:px-16 py-16">
@@ -64,13 +68,13 @@ export default function ContactPage() {
                 transition={{ duration: 0.6, ease: EASE }}
               >
                 <CheckCircle size={48} className="text-violet-400" />
-                <h1 className="text-4xl md:text-5xl font-bold text-white">Message sent!</h1>
-                <p className="text-white/50 text-lg">We'll get back to you within 24 hours.</p>
+                <h1 className="text-4xl md:text-5xl font-bold text-white">{t.contactPage.successTitle}</h1>
+                <p className="text-white/50 text-lg">{t.contactPage.successSubtitle}</p>
                 <Link
                   href="/"
                   className="mt-4 flex items-center gap-2 text-sm text-white/50 hover:text-white border-b border-white/20 hover:border-white pb-0.5 transition-colors duration-200"
                 >
-                  Back to home <ArrowRight size={13} />
+                  {t.contactPage.backHome} <ArrowRight size={13} />
                 </Link>
               </motion.div>
             ) : (
@@ -85,34 +89,35 @@ export default function ContactPage() {
                 <div className="flex flex-col justify-between">
                   <div>
                     <p className="text-xs text-white/30 tracking-[0.2em] uppercase mb-6">
-                      · Get in touch ·
+                      {t.contactPage.tagline}
                     </p>
                     <h1 className="text-5xl md:text-6xl font-bold text-white leading-[1.05] mb-8">
-                      Let&apos;s build something great together.
+                      {t.contactPage.title}
                     </h1>
                     <p className="text-white/40 text-base leading-relaxed">
-                      Tell us about your project and we'll get back to you within 24 hours with a plan forward.
+                      {isAudit ? t.contactPage.subtitleAudit : t.contactPage.subtitle}
                     </p>
                   </div>
 
                   <div className="hidden md:flex flex-col gap-2 mt-16">
-                    <p className="text-xs text-white/20 uppercase tracking-widest mb-3">Or reach us directly</p>
+                    <p className="text-xs text-white/20 uppercase tracking-widest mb-3">{t.contactPage.reachDirectly}</p>
                     <a
-                      href="https://linkedin.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      href={`mailto:${CONTACT_EMAIL}`}
                       className="text-sm text-white/40 hover:text-white transition-colors duration-200"
                     >
-                      LinkedIn
+                      {CONTACT_EMAIL}
                     </a>
-                    <a
-                      href="https://instagram.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sm text-white/40 hover:text-white transition-colors duration-200"
-                    >
-                      Instagram
-                    </a>
+                    {directLinks.map((l) => (
+                      <a
+                        key={l.label}
+                        href={l.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm text-white/40 hover:text-white transition-colors duration-200"
+                      >
+                        {l.label}
+                      </a>
+                    ))}
                   </div>
                 </div>
 
@@ -120,44 +125,51 @@ export default function ContactPage() {
                 <form onSubmit={handleSubmit} className="flex flex-col gap-6">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
-                      <label className="text-xs text-white/30 uppercase tracking-widest block mb-2">Name</label>
-                      <input name="name" type="text" placeholder="Full name" required className={inputBase} />
+                      <label className="text-xs text-white/30 uppercase tracking-widest block mb-2">{t.contactPage.labels.name}</label>
+                      <input name="name" type="text" placeholder={t.contactPage.labels.namePlaceholder} required className={inputBase} />
                     </div>
                     <div>
-                      <label className="text-xs text-white/30 uppercase tracking-widest block mb-2">Email</label>
-                      <input name="email" type="email" placeholder="Work email" required className={inputBase} />
+                      <label className="text-xs text-white/30 uppercase tracking-widest block mb-2">{t.contactPage.labels.email}</label>
+                      <input name="email" type="email" placeholder={t.contactPage.labels.emailPlaceholder} required className={inputBase} />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
-                      <label className="text-xs text-white/30 uppercase tracking-widest block mb-2">Project type</label>
-                      <select name="projectType" required defaultValue="" className={selectBase}>
-                        <option value="" disabled className="bg-[#0e0e1a]">Select type</option>
-                        <option value="Website" className="bg-[#0e0e1a]">Website</option>
-                        <option value="Web App" className="bg-[#0e0e1a]">Web App</option>
-                        <option value="Mobile App" className="bg-[#0e0e1a]">Mobile App</option>
-                        <option value="SEO" className="bg-[#0e0e1a]">SEO</option>
-                        <option value="Other" className="bg-[#0e0e1a]">Other</option>
+                      <label className="text-xs text-white/30 uppercase tracking-widest block mb-2">{t.contactPage.labels.projectType}</label>
+                      <select
+                        name="projectType"
+                        required
+                        value={projectType}
+                        onChange={(e) => setProjectType(e.target.value)}
+                        className={selectBase}
+                      >
+                        <option value="" disabled className="bg-[#0e0e1a]">{t.contactPage.labels.selectType}</option>
+                        <option value="Granskning" className="bg-[#0e0e1a]">{t.contactPage.labels.typeAudit}</option>
+                        <option value="Website" className="bg-[#0e0e1a]">{t.contactPage.labels.typeWebsite}</option>
+                        <option value="Web App" className="bg-[#0e0e1a]">{t.contactPage.labels.typeWebApp}</option>
+                        <option value="Mobile App" className="bg-[#0e0e1a]">{t.contactPage.labels.typeMobileApp}</option>
+                        <option value="SEO" className="bg-[#0e0e1a]">{t.contactPage.labels.typeSeo}</option>
+                        <option value="Other" className="bg-[#0e0e1a]">{t.contactPage.labels.typeOther}</option>
                       </select>
                     </div>
                     <div>
-                      <label className="text-xs text-white/30 uppercase tracking-widest block mb-2">Budget</label>
+                      <label className="text-xs text-white/30 uppercase tracking-widest block mb-2">{t.contactPage.labels.budget}</label>
                       <select name="budget" defaultValue="" className={selectBase}>
-                        <option value="" disabled className="bg-[#0e0e1a]">Select budget</option>
-                        <option value="Under 10k" className="bg-[#0e0e1a]">Under 10 000 kr</option>
-                        <option value="10k–30k" className="bg-[#0e0e1a]">10 000 – 30 000 kr</option>
-                        <option value="30k–50k" className="bg-[#0e0e1a]">30 000 – 50 000 kr</option>
-                        <option value="50k+" className="bg-[#0e0e1a]">50 000 kr+</option>
+                        <option value="" disabled className="bg-[#0e0e1a]">{t.contactPage.labels.selectBudget}</option>
+                        <option value="Under 10k" className="bg-[#0e0e1a]">{t.contactPage.labels.budgetUnder10k}</option>
+                        <option value="10k–30k" className="bg-[#0e0e1a]">{t.contactPage.labels.budget10to30k}</option>
+                        <option value="30k–50k" className="bg-[#0e0e1a]">{t.contactPage.labels.budget30to50k}</option>
+                        <option value="50k+" className="bg-[#0e0e1a]">{t.contactPage.labels.budget50kPlus}</option>
                       </select>
                     </div>
                   </div>
 
                   <div>
-                    <label className="text-xs text-white/30 uppercase tracking-widest block mb-2">Message</label>
+                    <label className="text-xs text-white/30 uppercase tracking-widest block mb-2">{t.contactPage.labels.message}</label>
                     <textarea
                       name="message"
-                      placeholder="Describe your project, goals, and any relevant timeline or constraints…"
+                      placeholder={t.contactPage.labels.messagePlaceholder}
                       required
                       rows={5}
                       className={`${inputBase} resize-none`}
@@ -169,15 +181,15 @@ export default function ContactPage() {
                   )}
 
                   <div className="flex items-center justify-between pt-2">
-                    <p className="text-xs text-white/20">We reply within 24 hours.</p>
+                    <p className="text-xs text-white/20">{t.contactPage.labels.replyTime}</p>
                     <button
                       type="submit"
                       disabled={loading}
                       className="flex items-center gap-2 bg-white text-[#080810] font-semibold text-sm px-7 py-3.5 rounded-full hover:bg-white/90 transition-colors duration-200 disabled:opacity-50"
                     >
                       {loading
-                        ? <><Loader2 size={14} className="animate-spin" /> Sending…</>
-                        : <>Send message <ArrowRight size={14} /></>
+                        ? <><Loader2 size={14} className="animate-spin" /> {t.contactPage.labels.sending}</>
+                        : <>{t.contactPage.labels.send} <ArrowRight size={14} /></>
                       }
                     </button>
                   </div>
@@ -188,5 +200,13 @@ export default function ContactPage() {
         </div>
       </main>
     </div>
+  );
+}
+
+export default function ContactPage() {
+  return (
+    <Suspense fallback={null}>
+      <ContactForm />
+    </Suspense>
   );
 }

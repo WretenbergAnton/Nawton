@@ -2,60 +2,66 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
+import { dictionary } from "@/lib/i18n/dictionary";
 
-const projects = [
-  {
-    id: 1,
-    name: "La Trattoria",
-    description: "A modern website for an authentic Italian restaurant in Åre — with digital menu, takeaway info and a warm, inviting design that reflects the food.",
-    tags: ["Web Design", "Next.js", "Branding"],
-    location: "Åre, Sweden",
+type ProjectKey = keyof (typeof dictionary)["sv"]["work"]["projects"];
+
+const projectMeta: Record<ProjectKey, {
+  color: string;
+  glow: string;
+  url: string;
+  images: string[];
+}> = {
+  seventyfive: {
+    color: "rgba(30, 12, 60, 0.55)",
+    glow: "rgba(139, 92, 246, 0.14)",
+    url: "#",
+    images: [],
+  },
+  latrattoria: {
     color: "rgba(120, 53, 15, 0.55)",
     glow: "rgba(180, 83, 9, 0.12)",
     url: "https://trattoriaa.netlify.app/",
     images: ["/website1.png", "/website1-2.png", "/website1-3.png"],
   },
-  {
-    id: 2,
-    name: "Mode E-commerce",
-    description: "A full e-commerce platform with payments, inventory management, and a custom storefront.",
-    tags: ["Web App", "Stripe", "Next.js"],
-    location: "Stockholm, Sweden",
+  ecommerce: {
     color: "rgba(15, 40, 80, 0.55)",
     glow: "rgba(29, 78, 160, 0.12)",
     url: "#",
-    images: [] as string[],
+    images: [],
   },
-  {
-    id: 3,
-    name: "Booking App",
-    description: "A cross-platform mobile app for booking services with real-time availability and push notifications.",
-    tags: ["Mobile App", "React Native", "Expo"],
-    location: "Sundsvall, Sweden",
+  booking: {
     color: "rgba(6, 40, 22, 0.55)",
     glow: "rgba(16, 120, 60, 0.12)",
     url: "#",
-    images: [] as string[],
+    images: [],
   },
-  {
-    id: 4,
-    name: "Fastighetsbyrån",
-    description: "A property listing platform with advanced filtering, map integration, and lead capture forms.",
-    tags: ["Web App", "Maps API", "Next.js"],
-    location: "Gothenburg, Sweden",
-    color: "rgba(30, 12, 60, 0.55)",
-    glow: "rgba(109, 40, 217, 0.12)",
-    url: "#",
-    images: [] as string[],
-  },
-];
+};
+
+const order: ProjectKey[] = ["seventyfive", "latrattoria", "ecommerce", "booking"];
 
 const ENTER = { duration: 0.55, ease: [0.16, 1, 0.3, 1] } as const;
 const EXIT  = { duration: 0.38, ease: [0.4, 0, 0.6, 0] } as const;
 
-function ProjectRow({ project, index }: { project: typeof projects[0]; index: number }) {
+function ProjectRow({
+  index,
+  copy,
+  meta,
+  visitLabel,
+  screenshotAlt,
+}: {
+  index: number;
+  copy: (typeof dictionary)["sv"]["work"]["projects"][ProjectKey];
+  meta: (typeof projectMeta)[ProjectKey];
+  visitLabel: string;
+  screenshotAlt: string;
+}) {
   const [hovered, setHovered] = useState(false);
+  const tags = "tags" in copy ? copy.tags : [];
+  const badge = "badge" in copy ? copy.badge : undefined;
 
   return (
     <motion.div
@@ -70,7 +76,7 @@ function ProjectRow({ project, index }: { project: typeof projects[0]; index: nu
       {/* Background color layer — separate transition timing */}
       <motion.div
         className="relative px-6 md:px-16"
-        animate={{ backgroundColor: hovered ? project.color : "rgba(0,0,0,0)" }}
+        animate={{ backgroundColor: hovered ? meta.color : "rgba(0,0,0,0)" }}
         transition={hovered ? { duration: 0.55, ease: [0.16, 1, 0.3, 1] } : { duration: 0.4, ease: [0.4, 0, 0.6, 0] }}
       >
         {/* Radial glow */}
@@ -79,33 +85,40 @@ function ProjectRow({ project, index }: { project: typeof projects[0]; index: nu
           animate={{ opacity: hovered ? 1 : 0 }}
           transition={hovered ? { duration: 0.6, ease: [0.16, 1, 0.3, 1] } : { duration: 0.35, ease: "easeIn" }}
           style={{
-            background: `radial-gradient(ellipse 70% 100% at 40% 50%, ${project.glow}, transparent)`,
+            background: `radial-gradient(ellipse 70% 100% at 40% 50%, ${meta.glow}, transparent)`,
           }}
         />
 
         {/* Collapsed row */}
         <div className="relative grid grid-cols-1 md:grid-cols-[1.2fr_2fr_1fr] gap-4 md:gap-10 items-center py-7 md:py-9">
-          <motion.h3
-            className="text-lg md:text-xl font-semibold text-white"
-            animate={{ x: hovered ? 6 : 0 }}
-            transition={{ type: "spring", stiffness: 180, damping: 22, mass: 0.8 }}
-          >
-            {project.name}
-          </motion.h3>
+          <div className="flex items-center gap-2 flex-wrap">
+            <motion.h3
+              className="text-lg md:text-xl font-semibold text-white"
+              animate={{ x: hovered ? 6 : 0 }}
+              transition={{ type: "spring", stiffness: 180, damping: 22, mass: 0.8 }}
+            >
+              {copy.name}
+            </motion.h3>
+            {badge && (
+              <span className="text-[10px] uppercase tracking-wider text-white/50 border border-white/15 rounded-full px-2 py-0.5">
+                {badge}
+              </span>
+            )}
+          </div>
 
           <motion.p
             className="text-sm leading-relaxed hidden md:block"
             animate={{ color: hovered ? "rgba(255,255,255,0.65)" : "rgba(255,255,255,0.35)" }}
             transition={hovered ? ENTER : EXIT}
           >
-            {project.description}
+            {copy.description}
           </motion.p>
 
           <div className="flex flex-col gap-1 items-start md:items-end">
-            {project.tags.map((t) => (
-              <span key={t} className="text-xs text-white/30 uppercase tracking-wider">{t}</span>
+            {tags.map((tag) => (
+              <span key={tag} className="text-xs text-white/30 uppercase tracking-wider">{tag}</span>
             ))}
-            <span className="text-xs text-white/20 mt-1">{project.location}</span>
+            <span className="text-xs text-white/20 mt-1">{copy.location}</span>
           </div>
         </div>
 
@@ -134,15 +147,15 @@ function ProjectRow({ project, index }: { project: typeof projects[0]; index: nu
                 animate={{ opacity: 1, y: 0, transition: { delay: 0.12, ...ENTER } }}
                 exit={{ opacity: 0, y: 4, transition: { duration: 0.15 } }}
               >
-                {project.url !== "#" && (
+                {meta.url !== "#" && (
                   <a
-                    href={project.url}
+                    href={meta.url}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={(e) => e.stopPropagation()}
                     className="flex items-center gap-1.5 text-sm text-white/70 hover:text-white border-b border-white/25 hover:border-white pb-0.5 transition-colors duration-200"
                   >
-                    Visit site <ArrowUpRight size={13} />
+                    {visitLabel} <ArrowUpRight size={13} />
                   </a>
                 )}
               </motion.div>
@@ -152,7 +165,7 @@ function ProjectRow({ project, index }: { project: typeof projects[0]; index: nu
                 {[0, 1, 2].map((i) => (
                   <motion.div
                     key={i}
-                    className="aspect-video rounded-2xl border border-white/[0.08] overflow-hidden"
+                    className="relative aspect-video rounded-2xl border border-white/[0.08] overflow-hidden"
                     initial={{ opacity: 0, y: 18, scale: 0.97 }}
                     animate={{
                       opacity: 1, y: 0, scale: 1,
@@ -163,11 +176,14 @@ function ProjectRow({ project, index }: { project: typeof projects[0]; index: nu
                       transition: { duration: 0.18 },
                     }}
                   >
-                    {project.images[i] ? (
-                      <img
-                        src={project.images[i]}
-                        alt={`${project.name} screenshot ${i + 1}`}
-                        className="w-full h-full object-cover"
+                    {meta.images[i] ? (
+                      <Image
+                        src={meta.images[i]}
+                        alt={`${copy.name} ${screenshotAlt} ${i + 1}`}
+                        fill
+                        sizes="(min-width: 768px) 240px, 33vw"
+                        className="object-cover"
+                        loading="lazy"
                       />
                     ) : (
                       <div
@@ -190,6 +206,8 @@ function ProjectRow({ project, index }: { project: typeof projects[0]; index: nu
 }
 
 export default function Work() {
+  const { t } = useLanguage();
+
   return (
     <section id="portfolio" className="relative">
       <div className="px-6 md:px-16 pt-24 pb-16 max-w-5xl mx-auto">
@@ -200,7 +218,7 @@ export default function Work() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          · Selected Work ·
+          {t.work.tagline}
         </motion.p>
         <motion.h2
           className="text-4xl md:text-6xl font-bold text-white leading-tight max-w-3xl"
@@ -209,13 +227,20 @@ export default function Work() {
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.1, ease: [0.33, 1, 0.68, 1] }}
         >
-          Our clients have ambitious visions — we make people feel them.
+          {t.work.title}
         </motion.h2>
       </div>
 
       <div className="pb-24">
-        {projects.map((p, i) => (
-          <ProjectRow key={p.id} project={p} index={i} />
+        {order.map((key, i) => (
+          <ProjectRow
+            key={key}
+            index={i}
+            copy={t.work.projects[key]}
+            meta={projectMeta[key]}
+            visitLabel={t.work.visitSite}
+            screenshotAlt={t.work.screenshotAlt}
+          />
         ))}
         <div className="border-t border-white/[0.07]" />
       </div>

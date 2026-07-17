@@ -30,6 +30,11 @@ body::after {
 ::-webkit-scrollbar-track { background: #080810; }
 ::-webkit-scrollbar-thumb { background: #2a2a3a; border-radius: 2px; }
 
+.nawton-logo {
+  width: 320px;
+  height: auto;
+}
+
 /* ── LAPTOP SECTION ── */
 @keyframes ls-spin {
   to { transform: rotate(360deg); }

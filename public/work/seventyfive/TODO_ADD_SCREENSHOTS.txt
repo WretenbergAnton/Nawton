@@ -1,0 +1,4 @@
+TODO: lägg till 3–4 skärmdumpar av SeventyFive-appen här
+(t.ex. schema.png, cardio.png, muskelkarta.png, framsteg.png)
+och referera dem i components/Work.tsx / app/work/page.tsx.
+Ta bort den här filen när riktiga bilder är på plats.

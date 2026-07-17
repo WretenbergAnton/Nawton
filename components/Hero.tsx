@@ -2,31 +2,11 @@
 
 import { useRef } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
-
-const services = [
-  {
-    title: "Strategy & Discovery",
-    description:
-      "We start by understanding your business, your users, and your goals. Then we map it into a clear direction your whole team can align behind — what you stand for, who you serve, and how you show up.",
-  },
-  {
-    title: "Design & Brand",
-    description:
-      "We translate strategy into a visual experience that's unmistakably yours. From UI systems to brand identity — how it looks, how it feels, and how it speaks.",
-  },
-  {
-    title: "Web Development",
-    description:
-      "Your designs come to life. We build fast, scalable, SEO-optimized websites and web apps using modern technology. Clean code, smooth interactions, real performance.",
-  },
-  {
-    title: "Launch & Grow",
-    description:
-      "We stay with the work after launch. Monitoring, improvements, and iterations — the same team that understood your vision builds and refines it until it works the way you need it to.",
-  },
-];
+import { useLanguage } from "@/lib/i18n/LanguageContext";
+import NawtonLogo from "@/components/NawtonLogo";
 
 export default function Hero() {
+  const { t } = useLanguage();
   const containerRef = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
@@ -54,7 +34,7 @@ export default function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.1, ease: [0.33, 1, 0.68, 1] as [number,number,number,number] }}
               >
-                · Design · Web · Development ·
+                {t.hero.tagline}
               </motion.p>
 
               <motion.h1
@@ -63,8 +43,8 @@ export default function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.9, delay: 0.2, ease: [0.33, 1, 0.68, 1] as [number,number,number,number] }}
               >
-                Web agency <br />
-                <span className="italic font-light">in Sundsvall</span>
+                {t.hero.h1Line1} <br />
+                <span className="italic font-light">{t.hero.h1Line2}</span>
               </motion.h1>
 
               <motion.p
@@ -73,7 +53,7 @@ export default function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.35, ease: [0.33, 1, 0.68, 1] as [number,number,number,number] }}
               >
-                We help brands grow digitally. We combine strategy, creativity and technology to build solutions that drive real results.
+                {t.hero.subtitle}
               </motion.p>
 
               <motion.div
@@ -86,13 +66,13 @@ export default function Hero() {
                   href="/contact"
                   className="bg-white text-black font-medium text-sm px-7 py-3.5 rounded-full hover:bg-white/90 transition-colors duration-200"
                 >
-                  Contact us
+                  {t.hero.ctaPrimary}
                 </a>
                 <a
                   href="#services"
                   className="border border-white/20 text-white font-medium text-sm px-7 py-3.5 rounded-full hover:border-white/50 transition-colors duration-200"
                 >
-                  How we can help
+                  {t.hero.ctaSecondary}
                 </a>
               </motion.div>
             </div>
@@ -108,22 +88,16 @@ export default function Hero() {
               <div className="absolute inset-0 bg-violet-500/10 blur-3xl rounded-full pointer-events-none" />
 
               {/* Desktop */}
-              <motion.img
-                src="/logo.png"
-                alt="Nawton"
+              <motion.div
                 animate={{ y: [0, -12, 0] }}
                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                className="hidden md:block w-full max-w-sm lg:max-w-md select-none relative"
-                style={{ mixBlendMode: "screen" }}
-              />
+                className="hidden md:block relative"
+              >
+                <NawtonLogo className="nawton-logo select-none" />
+              </motion.div>
 
               {/* Mobile */}
-              <img
-                src="/logo.png"
-                alt=""
-                className="md:hidden w-56 select-none mx-auto mt-4 opacity-20"
-                style={{ mixBlendMode: "screen" }}
-              />
+              <NawtonLogo className="md:hidden w-56 h-auto select-none mx-auto mt-4 opacity-20" />
             </motion.div>
 
           </div>
@@ -143,11 +117,11 @@ export default function Hero() {
             viewport={{ once: true }}
             transition={{ duration: 0.7, ease: [0.33, 1, 0.68, 1] }}
           >
-            We don't just build websites — we build businesses.
+            {t.hero.servicesTitle}
           </motion.h2>
 
           <div className="flex flex-col">
-            {services.map((s, i) => (
+            {t.hero.services.map((s, i) => (
               <motion.div
                 key={s.title}
                 className="grid grid-cols-1 md:grid-cols-[1fr_2fr_120px] gap-6 md:gap-10 items-start py-10 border-t border-white/8"

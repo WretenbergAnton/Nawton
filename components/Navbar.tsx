@@ -4,25 +4,21 @@ import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, Menu, X } from "lucide-react";
 import Link from "next/link";
-
-const services = [
-  { label: "Websites", description: "Fast, modern websites" },
-  { label: "Web Apps", description: "Scalable applications" },
-  { label: "Mobile Apps", description: "Apps for iOS & Android" },
-  { label: "SEO", description: "Visibility in search engines" },
-];
-
-const links = [
-  { label: "About", href: "/about" },
-  { label: "Services", href: "#services", dropdown: true },
-  { label: "Projects & Case Studies", href: "/work" },
-];
+import { useLanguage } from "@/lib/i18n/LanguageContext";
+import LanguageToggle from "@/components/LanguageToggle";
 
 export default function Navbar() {
+  const { t } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+
+  const links = [
+    { label: t.nav.about, href: "/about" },
+    { label: t.nav.services, href: "#services", dropdown: true },
+    { label: t.nav.work, href: "/work" },
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -102,7 +98,7 @@ export default function Navbar() {
                         exit={{ opacity: 0, y: -8, scale: 0.96 }}
                         transition={{ duration: 0.18, ease: [0.33, 1, 0.68, 1] }}
                       >
-                        {services.map((s) => (
+                        {t.nav.servicesDropdown.map((s) => (
                           <button
                             key={s.label}
                             onClick={() => navigate(link.href)}
@@ -138,18 +134,19 @@ export default function Navbar() {
             )}
           </nav>
 
-          {/* CTA + mobile toggle */}
+          {/* CTA + language toggle + mobile toggle */}
           <div className="flex items-center gap-3">
+            <LanguageToggle className="hidden md:flex" />
             <button
               onClick={() => navigate("#contact")}
               className="hidden md:block bg-white text-black text-sm font-medium px-5 py-2 rounded-full hover:bg-white/85 transition-colors duration-200"
             >
-              Contact
+              {t.nav.contact}
             </button>
             <button
               onClick={() => setMobileOpen((v) => !v)}
               className="md:hidden text-white p-1"
-              aria-label="Menu"
+              aria-label={t.nav.menu}
             >
               {mobileOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
@@ -178,11 +175,14 @@ export default function Navbar() {
                 </button>
               ))}
             </nav>
+            <div className="mt-6">
+              <LanguageToggle />
+            </div>
             <button
               onClick={() => navigate("#contact")}
               className="mt-10 bg-white text-black font-medium py-4 rounded-full text-base"
             >
-              Contact
+              {t.nav.contact}
             </button>
           </motion.div>
         )}
