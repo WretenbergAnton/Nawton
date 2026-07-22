@@ -32,7 +32,7 @@ export async function POST(req: NextRequest) {
 
     const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
     const model = genAI.getGenerativeModel({
-      model: "gemini-1.5-flash",
+      model: "gemini-flash-latest",
       systemInstruction: SYSTEM_PROMPT,
     });
 
@@ -40,6 +40,13 @@ export async function POST(req: NextRequest) {
       role: m.role === "assistant" ? "model" : "user",
       parts: [{ text: m.content }],
     }));
+
+    // Gemini requires history to start on a "user" turn. The widget's UI-only
+    // greeting is the first assistant/model message, so drop any leading
+    // model turns before starting the chat.
+    while (history.length > 0 && history[0].role === "model") {
+      history.shift();
+    }
 
     const lastMessage = messages[messages.length - 1].content;
 
