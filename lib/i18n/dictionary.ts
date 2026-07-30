@@ -9,7 +9,7 @@ export type Lang = "sv" | "en";
 
 const sv = {
   meta: {
-    title: "Nawton — Digitala produkter, appar & webbyrå i Sverige",
+    title: "Nawton | Digitala produkter, appar & webbyrå i Sverige",
     description:
       "Nawton är en webbyrå som designar och bygger snabba, moderna hemsidor och webbappar i hela Sverige.",
   },
@@ -37,17 +37,17 @@ const sv = {
     ctaPrimary: "Kontakta oss",
     ctaSecondary: "Så kan vi hjälpa dig",
     servicesTitle:
-      "Som webbyrå bygger vi inte bara hemsidor — vi bygger företag som växer. Vi reser dit du är, var i Sverige du än finns.",
+      "Som webbyrå bygger vi inte bara hemsidor. Vi bygger företag som växer. Vi reser dit du är, var i Sverige du än finns.",
     services: [
       {
         title: "Strategi & upptäckt",
         description:
-          "Vi börjar med att förstå din verksamhet, dina användare och dina mål. Sedan formar vi det till en tydlig riktning hela ditt team kan samlas kring — vad ni står för, vem ni finns till för och hur ni syns.",
+          "Vi börjar med att förstå din verksamhet, dina användare och dina mål. Sedan formar vi det till en tydlig riktning hela ditt team kan samlas kring: vad ni står för, vem ni finns till för och hur ni syns.",
       },
       {
         title: "Design & varumärke",
         description:
-          "Vi översätter strategi till en visuell upplevelse som är omisskännligt er. Från UI-system till varumärkesidentitet — hur det ser ut, känns och talar.",
+          "Vi översätter strategi till en visuell upplevelse som är omisskännligt er. Från UI-system till varumärkesidentitet: hur det ser ut, känns och talar.",
       },
       {
         title: "Webbutveckling",
@@ -57,28 +57,28 @@ const sv = {
       {
         title: "Lansering & tillväxt",
         description:
-          "Vi stannar kvar efter lansering. Övervakning, förbättringar och vidareutveckling — samma team som förstod er vision bygger och finslipar den tills den fungerar som ni behöver.",
+          "Vi stannar kvar efter lansering. Övervakning, förbättringar och vidareutveckling. Samma team som förstod er vision bygger och finslipar den tills den fungerar som ni behöver.",
       },
     ],
   },
 
   work: {
     tagline: "· Utvalda projekt ·",
-    title: "Våra kunder har ambitiösa visioner — vi får folk att känna dem.",
+    title: "Våra kunder har ambitiösa visioner. Vi får folk att känna dem.",
     visitSite: "Besök sajten",
     screenshotAlt: "skärmdump",
     projects: {
       seventyfive: {
         name: "SeventyFive",
         description:
-          "Vår egen mobilapp för 75 Hard-utmaningen — med schemaläggning, GPS-cardio, muskelkarta och framstegsfoton. Vi bygger även egna produkter — samma kvalitet levererar vi till våra kunder.",
+          "Vår egen mobilapp för 75 Hard-utmaningen, med schemaläggning, GPS-cardio, muskelkarta och framstegsfoton. Vi bygger även egna produkter. Samma kvalitet levererar vi till våra kunder.",
         location: "Egen produkt",
         badge: "Egen produkt",
       },
       latrattoria: {
         name: "La Trattoria",
         description:
-          "En modern hemsida för en äkta italiensk restaurang i Åre — med digital meny, avhämtningsinfo och en varm, inbjudande design som speglar maten.",
+          "En modern hemsida för en äkta italiensk restaurang i Åre, med digital meny, avhämtningsinfo och en varm, inbjudande design som speglar maten.",
         tags: ["Webbdesign", "Next.js", "Varumärke"],
         location: "Åre, Sverige",
       },
@@ -107,7 +107,7 @@ const sv = {
       {
         question: "Hur lång tid tar ett projekt?",
         answer:
-          "Det beror på omfattning. En hemsida tar oftast 3–6 veckor från start till lansering, en webbapp eller mobilapp längre — vanligtvis 2–4 månader. Du får en tydlig tidsplan innan vi börjar.",
+          "Det beror på omfattning. En hemsida tar oftast 3 till 6 veckor från start till lansering, en webbapp eller mobilapp längre, vanligtvis 2 till 4 månader. Du får en tydlig tidsplan innan vi börjar.",
       },
       {
         question: "Vad kostar det?",
@@ -126,7 +126,7 @@ const sv = {
       {
         question: "Erbjuder ni löpande support efter lansering?",
         answer:
-          "Ja. Vi finns kvar efter lansering för buggfixar, uppdateringar och förbättringar. Många kunder fortsätter med oss löpande — vi blir en långsiktig partner, inte bara en leverantör.",
+          "Ja. Vi finns kvar efter lansering för buggfixar, uppdateringar och förbättringar. Många kunder fortsätter med oss löpande. Vi blir en långsiktig partner, inte bara en leverantör.",
       },
       {
         question: "Kan ni bygga om en befintlig hemsida?",
@@ -138,7 +138,7 @@ const sv = {
 
   teamPreview: {
     intro:
-      "Vilka vi är — två systemvetare som bygger egna produkter och kundprojekt med samma noggrannhet.",
+      "Vilka vi är: två systemvetare som bygger egna produkter och kundprojekt med samma noggrannhet.",
     link: "Läs mer om oss",
     roles: { anton: "Utvecklare", nawid: "Design & utveckling" },
   },
@@ -147,7 +147,7 @@ const sv = {
     tagline: "· Vår egen produkt ·",
     title: "Vi bygger inte bara åt andra",
     paragraph1:
-      "seventyfive — en 75-dagars träningsutmaning med passloggning, GPS-spårning och lagfunktioner. Vi designade, byggde och lanserade den själva, och driver den vidare med riktiga användare.",
+      "seventyfive: en 75-dagars träningsutmaning med passloggning, GPS-spårning och lagfunktioner. Vi designade, byggde och lanserade den själva, och driver den vidare med riktiga användare.",
     paragraph2:
       "Det är därför vi kan säga att vi förstår vad som händer efter lansering. Vi lever i det varje dag med vår egen produkt.",
     cta: "Se caset",
@@ -156,7 +156,7 @@ const sv = {
   auditCta: {
     title: "Osäker på var du ska börja?",
     description:
-      "Boka en kostnadsfri 20-minutersgenomgång av din nuvarande webbplats. Vi visar tre konkreta saker du kan förbättra — oavsett om du anlitar oss eller inte.",
+      "Boka en kostnadsfri 20-minutersgenomgång av din nuvarande webbplats. Vi visar tre konkreta saker du kan förbättra, oavsett om du anlitar oss eller inte.",
     button: "Boka gratis genomgång",
   },
 
@@ -165,7 +165,7 @@ const sv = {
     portfolioTitle: ["Projekt &", "case studies"],
     portfolioDescription: ["Webbdesign, Next.js-utveckling", "och mobilappar."],
     ctaLabel: "Hör av dig",
-    ctaCopy: ["Nu kör vi —", "tillsammans."],
+    ctaCopy: ["Nu kör vi", "tillsammans."],
     ctaTitle: "Starta ett projekt",
     ctaLink: "Kontakta oss",
     orgNrLabel: "Org.nr",
@@ -200,8 +200,8 @@ const sv = {
       budget: "Budget",
       selectBudget: "Välj budget",
       budgetUnder10k: "Under 10 000 kr",
-      budget10to30k: "10 000 – 30 000 kr",
-      budget30to50k: "30 000 – 50 000 kr",
+      budget10to30k: "10 000 till 30 000 kr",
+      budget30to50k: "30 000 till 50 000 kr",
       budget50kPlus: "50 000 kr+",
       message: "Meddelande",
       messagePlaceholder: "Beskriv ditt projekt, dina mål och eventuell tidsplan eller andra förutsättningar…",
@@ -222,8 +222,8 @@ const sv = {
         role: "Medgrundare · Utvecklare",
         photoTodo: "TODO: ersätt med riktigt foto av Anton",
         bio: [
-          "Anton är systemvetare och fokuserar på den tekniska sidan — han bygger snabba, skalbara webbapplikationer och ser till att allt fungerar exakt som det ska. Han har ett skarpt öga för prestanda och låg tolerans för sådant som känns långsamt eller trasigt.",
-          "Han har byggt för webben sedan tonåren och bygger dessutom egna produkter vid sidan om kunduppdragen — samma nyfikenhet i allt han gör.",
+          "Anton är systemvetare och fokuserar på den tekniska sidan. Han bygger snabba, skalbara webbapplikationer och ser till att allt fungerar exakt som det ska. Han har ett skarpt öga för prestanda och låg tolerans för sådant som känns långsamt eller trasigt.",
+          "Han har byggt för webben sedan tonåren och bygger dessutom egna produkter vid sidan om kunduppdragen. Samma nyfikenhet i allt han gör.",
         ],
       },
       {
@@ -231,15 +231,15 @@ const sv = {
         role: "Medgrundare · Design & utveckling",
         photoTodo: "TODO: ersätt med riktigt foto av Nawid",
         bio: [
-          "Nawid är också systemvetare och befinner sig i skärningspunkten mellan design och teknik. Han bryr sig djupt om hur saker ser ut och känns — övergångarna, hierarkin, hur en sida guidar blicken utan att man märker det.",
-          "Hans bakgrund spänner över både kreativ ledning och frontend-utveckling, vilket betyder att designer inte bara ser bra ut i Figma — de fungerar i webbläsaren också. Han bygger även egna produkter, som appen SeventyFive.",
+          "Nawid är också systemvetare och befinner sig i skärningspunkten mellan design och teknik. Han bryr sig djupt om hur saker ser ut och känns: övergångarna, hierarkin, hur en sida guidar blicken utan att man märker det.",
+          "Hans bakgrund spänner över både kreativ ledning och frontend-utveckling, vilket betyder att designer inte bara ser bra ut i Figma. De fungerar i webbläsaren också. Han bygger även egna produkter, som appen SeventyFive.",
         ],
       },
     ],
     storyTitle: "Varför vi startade Nawton",
     story: [
-      "Vi såg samma problem gång på gång: företag med genuin ambition som satt fast med hemsidor som inte speglade dem. Generiska mallar, byråer som lovade för mycket och levererade för lite, eller utvecklare som kunde bygga men inte designa — och designers som inte kunde bygga.",
-      "Nawton är vårt svar på det. En liten, fokuserad studio där design och utveckling inte är två separata överlämningar — de sker tillsammans, av folk som bryr sig om båda.",
+      "Vi såg samma problem gång på gång: företag med genuin ambition som satt fast med hemsidor som inte speglade dem. Generiska mallar, byråer som lovade för mycket och levererade för lite, eller utvecklare som kunde bygga men inte designa, och designers som inte kunde bygga.",
+      "Nawton är vårt svar på det. En liten, fokuserad studio där design och utveckling inte är två separata överlämningar: de sker tillsammans, av folk som bryr sig om båda.",
       "Vi jobbar med ett fåtal kunder åt gången så vi kan göra jobbet ordentligt. Inga account managers, inga överlämningar. Ni jobbar direkt med oss.",
     ],
     valuesTitle: "Hur vi jobbar",
@@ -247,7 +247,7 @@ const sv = {
       {
         title: "Hantverk före hastighet",
         description:
-          "Vi tar hellre tid på oss att göra rätt än att leverera något som precis fungerar. Varje detalj spelar roll — de folk märker och de de inte gör.",
+          "Vi tar hellre tid på oss att göra rätt än att leverera något som precis fungerar. Varje detalj spelar roll: både de som märks och de som inte gör det.",
       },
       {
         title: "Ärlig kommunikation",
@@ -268,7 +268,7 @@ const sv = {
     tagline: "· Projekt & case studies ·",
     title: "Arbete vi är stolta över.",
     subtitle:
-      "Ett urval projekt inom webb, mobil och e-handel — samt vår egen produkt. Allt byggt från grunden, inga mallar, inga genvägar.",
+      "Ett urval projekt inom webb, mobil och e-handel, samt vår egen produkt. Allt byggt från grunden, inga mallar, inga genvägar.",
     visit: "Besök",
     ctaTitle: "Har du ett projekt i åtanke?",
     ctaLink: "Starta ett projekt",
@@ -279,11 +279,11 @@ const sv = {
     tagline: "· Egen produkt ·",
     title: "SeventyFive",
     subtitle:
-      "En 75-dagars träningsutmaning som vi designade, byggde och lanserade själva — och som vi driver vidare med riktiga användare.",
+      "En 75-dagars träningsutmaning som vi designade, byggde och lanserade själva, och som vi driver vidare med riktiga användare.",
     paragraph1:
       "seventyfive är vår egen mobilapp för 75 Hard-utmaningen, med passloggning, GPS-spårning, lagfunktioner och framstegsfoton. Vi äger hela resan: idé, design, utveckling och drift.",
     paragraph2:
-      "Det är därför vi kan säga att vi förstår vad som händer efter lansering. Vi lever i det varje dag med vår egen produkt — samma noggrannhet ger vi till varje kundprojekt.",
+      "Det är därför vi kan säga att vi förstår vad som händer efter lansering. Vi lever i det varje dag med vår egen produkt. Samma noggrannhet ger vi till varje kundprojekt.",
     ctaTitle: "Vill du bygga något liknande?",
     ctaLink: "Starta ett projekt",
   },
@@ -292,7 +292,7 @@ const sv = {
     tagline: "· Vår process ·",
     titleLine1: "Så jobbar vi",
     titleLine2: "tillsammans med dig.",
-    subtitle: "Från första samtalet till lansering och därefter — så här ser det ut att jobba med Nawton.",
+    subtitle: "Från första samtalet till lansering och därefter: så här ser det ut att jobba med Nawton.",
     ctaTitle: "Redo att komma igång?",
     ctaLink: "Kontakta oss",
     steps: [
@@ -300,21 +300,21 @@ const sv = {
         title: "Utforskning",
         subtitle: "Vi lär känna dig",
         description:
-          "Innan vi rör en enda pixel eller skriver en rad kod sätter vi oss ner med dig. Vi går på djupet med din verksamhet, dina användare, dina mål och vad som står i vägen. Resultatet är en tydlig riktning — vad vi bygger, varför, och för vem.",
+          "Innan vi rör en enda pixel eller skriver en rad kod sätter vi oss ner med dig. Vi går på djupet med din verksamhet, dina användare, dina mål och vad som står i vägen. Resultatet är en tydlig riktning: vad vi bygger, varför och för vem.",
         tags: ["Uppstartsmöte", "Användarundersökning", "Strategidokument"],
       },
       {
         title: "Design",
         subtitle: "Vi får det att se ut som dig",
         description:
-          "Vi översätter strategi till en visuell upplevelse som är omisskännligt din. Wireframes, UI-system, varumärkesdetaljer — allt övervägs noga. Du ser det och godkänner innan vi bygger något alls.",
+          "Vi översätter strategi till en visuell upplevelse som är omisskännligt din. Wireframes, UI-system, varumärkesdetaljer. Allt övervägs noga. Du ser det och godkänner innan vi bygger något alls.",
         tags: ["Wireframes", "UI-design", "Varumärkesidentitet"],
       },
       {
         title: "Utveckling",
         subtitle: "Vi bygger det rätt",
         description:
-          "Din design blir verklighet. Snabbt, skalbart och byggt på modern teknik. Vi skriver ren kod, bygger smidiga interaktioner och ser till att allt presterar — på alla enheter, i alla skärmstorlekar.",
+          "Din design blir verklighet. Snabbt, skalbart och byggt på modern teknik. Vi skriver ren kod, bygger smidiga interaktioner och ser till att allt presterar på alla enheter, i alla skärmstorlekar.",
         tags: ["Next.js", "React Native", "Prestanda"],
       },
       {
@@ -326,9 +326,9 @@ const sv = {
       },
       {
         title: "Lansering",
-        subtitle: "Vi går live — tillsammans",
+        subtitle: "Vi går live, tillsammans",
         description:
-          "Lanseringsdagen ska vara spännande, inte stressig. Vi sköter driftsättning, övervakar prestanda och finns tillgängliga. Efter lansering stannar vi kvar för vidareutveckling och förbättringar — samma team som byggde det håller det igång.",
+          "Lanseringsdagen ska vara spännande, inte stressig. Vi sköter driftsättning, övervakar prestanda och finns tillgängliga. Efter lansering stannar vi kvar för vidareutveckling och förbättringar. Samma team som byggde det håller det igång.",
         tags: ["Driftsättning", "Övervakning", "Löpande support"],
       },
     ],
@@ -356,7 +356,7 @@ const sv = {
 
 const en: typeof sv = {
   meta: {
-    title: "Nawton — Digital products, apps & web agency in Sweden",
+    title: "Nawton | Digital products, apps & web agency in Sweden",
     description:
       "Nawton is a web agency that designs and builds fast, modern websites and web apps across Sweden.",
   },
@@ -380,20 +380,20 @@ const en: typeof sv = {
     h1Line1: "Web agency",
     h1Line2: "for all of Sweden",
     subtitle:
-      "We design and build fast, modern websites and apps that get small businesses real results — without the big-agency price tag.",
+      "We design and build fast, modern websites and apps that get small businesses real results, without the big-agency price tag.",
     ctaPrimary: "Contact us",
     ctaSecondary: "How we can help",
-    servicesTitle: "We don't just build websites — we build businesses that grow. We travel to wherever you are in Sweden.",
+    servicesTitle: "We don't just build websites. We build businesses that grow. We travel to wherever you are in Sweden.",
     services: [
       {
         title: "Strategy & Discovery",
         description:
-          "We start by understanding your business, your users, and your goals. Then we map it into a clear direction your whole team can align behind — what you stand for, who you serve, and how you show up.",
+          "We start by understanding your business, your users, and your goals. Then we map it into a clear direction your whole team can align behind: what you stand for, who you serve, and how you show up.",
       },
       {
         title: "Design & Brand",
         description:
-          "We translate strategy into a visual experience that's unmistakably yours. From UI systems to brand identity — how it looks, how it feels, and how it speaks.",
+          "We translate strategy into a visual experience that's unmistakably yours. From UI systems to brand identity: how it looks, how it feels, and how it speaks.",
       },
       {
         title: "Web Development",
@@ -403,28 +403,28 @@ const en: typeof sv = {
       {
         title: "Launch & Grow",
         description:
-          "We stay with the work after launch. Monitoring, improvements, and iterations — the same team that understood your vision builds and refines it until it works the way you need it to.",
+          "We stay with the work after launch. Monitoring, improvements, and iterations. The same team that understood your vision builds and refines it until it works the way you need it to.",
       },
     ],
   },
 
   work: {
     tagline: "· Selected Work ·",
-    title: "Our clients have ambitious visions — we make people feel them.",
+    title: "Our clients have ambitious visions. We make people feel them.",
     visitSite: "Visit site",
     screenshotAlt: "screenshot",
     projects: {
       seventyfive: {
         name: "SeventyFive",
         description:
-          "Our own mobile app for the 75 Hard challenge — with scheduling, GPS cardio, a muscle map and progress photos. We build our own products too — the same quality we deliver to our clients.",
+          "Our own mobile app for the 75 Hard challenge, with scheduling, GPS cardio, a muscle map and progress photos. We build our own products too. The same quality we deliver to our clients.",
         location: "Own product",
         badge: "Own product",
       },
       latrattoria: {
         name: "La Trattoria",
         description:
-          "A modern website for an authentic Italian restaurant in Åre — with digital menu, takeaway info and a warm, inviting design that reflects the food.",
+          "A modern website for an authentic Italian restaurant in Åre, with digital menu, takeaway info and a warm, inviting design that reflects the food.",
         tags: ["Web Design", "Next.js", "Branding"],
         location: "Åre, Sweden",
       },
@@ -453,7 +453,7 @@ const en: typeof sv = {
       {
         question: "How long does a project take?",
         answer:
-          "It depends on scope. A website typically takes 3–6 weeks from kickoff to launch, a web app or mobile app longer — usually 2–4 months. You'll get a clear timeline before we start.",
+          "It depends on scope. A website typically takes 3 to 6 weeks from kickoff to launch, a web app or mobile app longer, usually 2 to 4 months. You'll get a clear timeline before we start.",
       },
       {
         question: "What does it cost?",
@@ -471,7 +471,7 @@ const en: typeof sv = {
       {
         question: "Do you offer ongoing support after launch?",
         answer:
-          "Yes. We stay available after launch for bug fixes, updates, and improvements. Many clients keep working with us on an ongoing basis — we become a long-term partner, not just a vendor.",
+          "Yes. We stay available after launch for bug fixes, updates, and improvements. Many clients keep working with us on an ongoing basis. We become a long-term partner, not just a vendor.",
       },
       {
         question: "Can you redesign an existing website?",
@@ -482,7 +482,7 @@ const en: typeof sv = {
   },
 
   teamPreview: {
-    intro: "Who we are — two systems scientists who build our own products and client projects with the same care.",
+    intro: "Who we are: two systems scientists who build our own products and client projects with the same care.",
     link: "More about us",
     roles: { anton: "Developer", nawid: "Design & development" },
   },
@@ -491,7 +491,7 @@ const en: typeof sv = {
     tagline: "· Our own product ·",
     title: "We don't just build for others",
     paragraph1:
-      "seventyfive — a 75-day fitness challenge with workout logging, GPS tracking, and team features. We designed, built, and launched it ourselves, and keep running it with real users.",
+      "seventyfive: a 75-day fitness challenge with workout logging, GPS tracking, and team features. We designed, built, and launched it ourselves, and keep running it with real users.",
     paragraph2:
       "That's why we can say we understand what happens after launch. We live it every day with our own product.",
     cta: "See the case study",
@@ -500,7 +500,7 @@ const en: typeof sv = {
   auditCta: {
     title: "Not sure where to start?",
     description:
-      "Book a free 20-minute review of your current website. We'll show you three concrete things you can improve — whether you hire us or not.",
+      "Book a free 20-minute review of your current website. We'll show you three concrete things you can improve, whether you hire us or not.",
     button: "Book a free review",
   },
 
@@ -509,7 +509,7 @@ const en: typeof sv = {
     portfolioTitle: ["Projects &", "case studies"],
     portfolioDescription: ["Web design, Next.js development", "and mobile apps."],
     ctaLabel: "Get in touch",
-    ctaCopy: ["Let's get to it —", "together."],
+    ctaCopy: ["Let's get to it", "together."],
     ctaTitle: "Start a project",
     ctaLink: "Contact us",
     orgNrLabel: "Reg. no.",
@@ -543,8 +543,8 @@ const en: typeof sv = {
       budget: "Budget",
       selectBudget: "Select budget",
       budgetUnder10k: "Under 10,000 SEK",
-      budget10to30k: "10,000 – 30,000 SEK",
-      budget30to50k: "30,000 – 50,000 SEK",
+      budget10to30k: "10,000 to 30,000 SEK",
+      budget30to50k: "30,000 to 50,000 SEK",
       budget50kPlus: "50,000 SEK+",
       message: "Message",
       messagePlaceholder: "Describe your project, goals, and any relevant timeline or constraints…",
@@ -565,8 +565,8 @@ const en: typeof sv = {
         role: "Co-founder · Developer",
         photoTodo: "TODO: replace with a real photo of Anton",
         bio: [
-          "Anton is a systems scientist who focuses on the technical side — building fast, scalable web applications and making sure everything works exactly as it should. He has a sharp eye for performance and a low tolerance for things that feel slow or broken.",
-          "He's been building for the web since his teens and also builds his own products alongside client work — the same curiosity in everything he does.",
+          "Anton is a systems scientist who focuses on the technical side. He builds fast, scalable web applications and makes sure everything works exactly as it should. He has a sharp eye for performance and a low tolerance for things that feel slow or broken.",
+          "He's been building for the web since his teens and also builds his own products alongside client work. The same curiosity shows in everything he does.",
         ],
       },
       {
@@ -574,15 +574,15 @@ const en: typeof sv = {
         role: "Co-founder · Design & development",
         photoTodo: "TODO: replace with a real photo of Nawid",
         bio: [
-          "Nawid is also a systems scientist and sits at the intersection of design and engineering. He cares deeply about how things look and feel — the transitions, the hierarchy, the way a page guides your eye without you noticing.",
-          "His background spans both creative direction and frontend development, which means designs don't just look good in Figma — they work in the browser too. He also builds his own products, like the app SeventyFive.",
+          "Nawid is also a systems scientist and sits at the intersection of design and engineering. He cares deeply about how things look and feel: the transitions, the hierarchy, the way a page guides your eye without you noticing.",
+          "His background spans both creative direction and frontend development, which means designs don't just look good in Figma. They work in the browser too. He also builds his own products, like the app SeventyFive.",
         ],
       },
     ],
     storyTitle: "Why we started Nawton",
     story: [
-      "We kept seeing the same problem: businesses with genuine ambition stuck with websites that didn't reflect them. Generic templates, agencies that over-promised and under-delivered, or developers who could build but not design — and designers who couldn't build.",
-      "Nawton is our answer to that. A small, focused studio where design and development aren't two separate handoffs — they happen together, by people who care about both.",
+      "We kept seeing the same problem: businesses with genuine ambition stuck with websites that didn't reflect them. Generic templates, agencies that over-promised and under-delivered, or developers who could build but not design, and designers who couldn't build.",
+      "Nawton is our answer to that. A small, focused studio where design and development aren't two separate handoffs: they happen together, by people who care about both.",
       "We work with a small number of clients at a time so we can do the work properly. No account managers, no handoffs. You work directly with us.",
     ],
     valuesTitle: "How we work",
@@ -590,7 +590,7 @@ const en: typeof sv = {
       {
         title: "Craft over speed",
         description:
-          "We'd rather take the time to do something right than ship something that just barely works. Every detail matters — the ones people notice and the ones they don't.",
+          "We'd rather take the time to do something right than ship something that just barely works. Every detail matters: the ones people notice and the ones they don't.",
       },
       {
         title: "Honest communication",
@@ -611,7 +611,7 @@ const en: typeof sv = {
     tagline: "· Projects & Case Studies ·",
     title: "Work we're proud of.",
     subtitle:
-      "A selection of projects across web, mobile, and e-commerce — plus our own product. Every one built from scratch, no templates, no shortcuts.",
+      "A selection of projects across web, mobile, and e-commerce, plus our own product. Every one built from scratch, no templates, no shortcuts.",
     visit: "Visit",
     ctaTitle: "Got a project in mind?",
     ctaLink: "Start a project",
@@ -622,11 +622,11 @@ const en: typeof sv = {
     tagline: "· Own product ·",
     title: "SeventyFive",
     subtitle:
-      "A 75-day fitness challenge we designed, built, and launched ourselves — and keep running with real users.",
+      "A 75-day fitness challenge we designed, built, and launched ourselves, and keep running with real users.",
     paragraph1:
       "seventyfive is our own mobile app for the 75 Hard challenge, with workout logging, GPS tracking, team features, and progress photos. We own the whole journey: idea, design, development, and operations.",
     paragraph2:
-      "That's why we can say we understand what happens after launch. We live it every day with our own product — the same care goes into every client project.",
+      "That's why we can say we understand what happens after launch. We live it every day with our own product. The same care goes into every client project.",
     ctaTitle: "Want to build something similar?",
     ctaLink: "Start a project",
   },
@@ -635,7 +635,7 @@ const en: typeof sv = {
     tagline: "· Our process ·",
     titleLine1: "How we",
     titleLine2: "work with you.",
-    subtitle: "From the first conversation to launch and beyond — here's exactly what working with Nawton looks like.",
+    subtitle: "From the first conversation to launch and beyond: here's exactly what working with Nawton looks like.",
     ctaTitle: "Ready to start?",
     ctaLink: "Contact us",
     steps: [
@@ -643,21 +643,21 @@ const en: typeof sv = {
         title: "Discovery",
         subtitle: "We get to know you",
         description:
-          "Before we touch a single pixel or write a line of code, we sit down with you. We dig into your business, your users, your goals, and what's standing in the way. The output is a clear direction — what we're building, why, and for whom.",
+          "Before we touch a single pixel or write a line of code, we sit down with you. We dig into your business, your users, your goals, and what's standing in the way. The output is a clear direction: what we're building, why, and for whom.",
         tags: ["Kickoff call", "User research", "Strategy brief"],
       },
       {
         title: "Design",
         subtitle: "We make it look like you",
         description:
-          "We translate strategy into a visual experience that's unmistakably yours. Wireframes, UI systems, brand touchpoints — every detail is considered. You see it and approve before we build anything.",
+          "We translate strategy into a visual experience that's unmistakably yours. Wireframes, UI systems, brand touchpoints. Every detail is considered. You see it and approve before we build anything.",
         tags: ["Wireframes", "UI design", "Brand identity"],
       },
       {
         title: "Development",
         subtitle: "We build it right",
         description:
-          "Your designs come to life. Fast, scalable, and built on modern technology. We write clean code, build smooth interactions, and make sure everything performs — on every device, at every screen size.",
+          "Your designs come to life. Fast, scalable, and built on modern technology. We write clean code, build smooth interactions, and make sure everything performs on every device, at every screen size.",
         tags: ["Next.js", "React Native", "Performance"],
       },
       {
@@ -669,9 +669,9 @@ const en: typeof sv = {
       },
       {
         title: "Launch",
-        subtitle: "We go live — together",
+        subtitle: "We go live, together",
         description:
-          "Launch day is exciting, not stressful. We handle deployment, monitor performance, and stay available. After launch, we stick around for iterations and improvements — the same team that built it keeps it running.",
+          "Launch day is exciting, not stressful. We handle deployment, monitor performance, and stay available. After launch, we stick around for iterations and improvements. The same team that built it keeps it running.",
         tags: ["Deployment", "Monitoring", "Ongoing support"],
       },
     ],

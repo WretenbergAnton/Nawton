@@ -10,7 +10,7 @@ const geist = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const grotesk = Space_Grotesk({ variable: "--font-grotesk", subsets: ["latin"], weight: ["400", "500", "600", "700"] });
 const playfair = Playfair_Display({ variable: "--font-playfair", subsets: ["latin"], weight: ["500"] });
 
-const title = "Nawton — Digitala produkter, appar & webbyrå i Sverige";
+const title = "Nawton | Digitala produkter, appar & webbyrå i Sverige";
 const description =
   "Nawton är en webbyrå som designar och bygger snabba, moderna hemsidor och webbappar i hela Sverige.";
 

@@ -66,7 +66,7 @@ function StepCard({ step, meta, index, total }: { step: StepCopy; meta: (typeof 
         style={{ opacity, y }}
       >
         <p className="text-xs uppercase tracking-[0.2em] mb-3" style={{ color: meta.accent }}>
-          {meta.number} — {step.subtitle}
+          {meta.number} · {step.subtitle}
         </p>
 
         <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">

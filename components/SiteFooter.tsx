@@ -15,7 +15,7 @@ export default function SiteFooter() {
   return (
     <footer className="px-6 md:px-16 py-6 border-t border-white/8 flex flex-col md:flex-row items-start md:items-center justify-between gap-3">
       <div className="flex items-center gap-6 flex-wrap">
-        <span className="text-xs text-white/25">© {new Date().getFullYear()} Nawton — {LOCATION}</span>
+        <span className="text-xs text-white/25">© {new Date().getFullYear()} Nawton, {LOCATION}</span>
         <a href={`mailto:${CONTACT_EMAIL}`} className="text-xs text-white/25 hover:text-white/60 transition-colors duration-200">
           {CONTACT_EMAIL}
         </a>
