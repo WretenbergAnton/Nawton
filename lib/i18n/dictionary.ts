@@ -31,7 +31,7 @@ const sv = {
   hero: {
     tagline: "· Design · Webb · Utveckling ·",
     h1Line1: "Vi bygger digitala produkter",
-    h1Line2: "— inklusive våra egna.",
+    h1Line2: "inklusive våra egna.",
     subtitle:
       "Två systemvetare som designar och utvecklar hemsidor, webbappar och mobilappar. Vi vet vad som krävs för att få ut något i skarpt läge, för vi driver våra egna produkter också.",
     ctaPrimary: "Kontakta oss",
