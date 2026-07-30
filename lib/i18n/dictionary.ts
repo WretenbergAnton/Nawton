@@ -9,9 +9,9 @@ export type Lang = "sv" | "en";
 
 const sv = {
   meta: {
-    title: "Nawton – Webbyrå | Design & Webbutveckling i Sverige",
+    title: "Nawton — Digitala produkter, appar & webbyrå i Sverige",
     description:
-      "Nawton är en webbyrå som designar och bygger snabba, moderna hemsidor och webbappar för småföretag i hela Sverige.",
+      "Nawton är en webbyrå som designar och bygger snabba, moderna hemsidor och webbappar i hela Sverige.",
   },
 
   nav: {
@@ -30,14 +30,14 @@ const sv = {
 
   hero: {
     tagline: "· Design · Webb · Utveckling ·",
-    h1Line1: "Webbyrå",
-    h1Line2: "i hela Sverige",
+    h1Line1: "Vi bygger digitala produkter",
+    h1Line2: "— inklusive våra egna.",
     subtitle:
-      "Vi designar och bygger snabba, moderna webbplatser och appar som ger småföretag resultat — utan storbyråns prislapp.",
+      "Två systemvetare som designar och utvecklar hemsidor, webbappar och mobilappar. Vi vet vad som krävs för att få ut något i skarpt läge, för vi driver våra egna produkter också.",
     ctaPrimary: "Kontakta oss",
     ctaSecondary: "Så kan vi hjälpa dig",
     servicesTitle:
-      "Vi bygger inte bara hemsidor — vi bygger företag som växer. Vi reser dit du är, var i Sverige du än finns.",
+      "Som webbyrå bygger vi inte bara hemsidor — vi bygger företag som växer. Vi reser dit du är, var i Sverige du än finns.",
     services: [
       {
         title: "Strategi & upptäckt",
@@ -332,9 +332,9 @@ const sv = {
 
 const en: typeof sv = {
   meta: {
-    title: "Nawton – Web Agency | Design & Web Development in Sweden",
+    title: "Nawton — Digital products, apps & web agency in Sweden",
     description:
-      "Nawton is a web agency that designs and builds fast, modern websites and web apps for small businesses across Sweden.",
+      "Nawton is a web agency that designs and builds fast, modern websites and web apps across Sweden.",
   },
 
   nav: {
