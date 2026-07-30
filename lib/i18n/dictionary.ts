@@ -377,13 +377,13 @@ const en: typeof sv = {
 
   hero: {
     tagline: "· Design · Web · Development ·",
-    h1Line1: "Web agency",
-    h1Line2: "for all of Sweden",
+    h1Line1: "We build digital products",
+    h1Line2: "including our own.",
     subtitle:
-      "We design and build fast, modern websites and apps that get small businesses real results, without the big-agency price tag.",
+      "Two systems scientists who design and develop websites, web apps, and mobile apps. We know what it takes to ship something for real, because we run our own products too.",
     ctaPrimary: "Contact us",
     ctaSecondary: "How we can help",
-    servicesTitle: "We don't just build websites. We build businesses that grow. We travel to wherever you are in Sweden.",
+    servicesTitle: "As a web agency, we don't just build websites. We build businesses that grow. We travel to wherever you are in Sweden.",
     services: [
       {
         title: "Strategy & Discovery",
