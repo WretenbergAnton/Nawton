@@ -19,7 +19,9 @@ export default function SiteFooter() {
         <a href={`mailto:${CONTACT_EMAIL}`} className="text-xs text-white/25 hover:text-white/60 transition-colors duration-200">
           {CONTACT_EMAIL}
         </a>
-        <span className="text-xs text-white/15">{t.contact.orgNrLabel} {ORG_NR}</span>
+        {ORG_NR && (
+          <span className="text-xs text-white/15">{t.contact.orgNrLabel} {ORG_NR}</span>
+        )}
       </div>
       {socialLinks.length > 0 && (
         <div className="flex gap-6">

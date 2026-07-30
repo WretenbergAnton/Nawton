@@ -3,14 +3,15 @@
 // links left empty are simply not rendered (see components that import this).
 
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+  process.env.NEXT_PUBLIC_SITE_URL || "https://nawton.net";
 
 export const CONTACT_EMAIL = "support@nawton.net";
 
 export const LOCATION = "Sverige";
 
-// TODO: fyll i riktigt organisationsnummer när det finns.
-export const ORG_NR = "TODO: ORGANISATIONSNUMMER";
+// Tomt värde döljer org.nr-raden i footern (se SiteFooter.tsx) tills ett
+// riktigt organisationsnummer fylls i här.
+export const ORG_NR = "";
 
 // TODO: fyll i riktiga profil-url:er. Tomma värden renderas inte i footern.
 export const SOCIAL_LINKS = {
