@@ -41,7 +41,7 @@ const projectMeta: Record<ProjectKey, {
   },
 };
 
-const order: ProjectKey[] = ["seventyfive", "latrattoria", "ecommerce", "booking"];
+const order: ProjectKey[] = ["latrattoria", "ecommerce", "booking"];
 
 const ENTER = { duration: 0.55, ease: [0.16, 1, 0.3, 1] } as const;
 const EXIT  = { duration: 0.38, ease: [0.4, 0, 0.6, 0] } as const;
