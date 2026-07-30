@@ -143,6 +143,16 @@ const sv = {
     roles: { anton: "Utvecklare", nawid: "Design & utveckling" },
   },
 
+  ownProduct: {
+    tagline: "· Vår egen produkt ·",
+    title: "Vi bygger inte bara åt andra",
+    paragraph1:
+      "seventyfive — en 75-dagars träningsutmaning med passloggning, GPS-spårning och lagfunktioner. Vi designade, byggde och lanserade den själva, och driver den vidare med riktiga användare.",
+    paragraph2:
+      "Det är därför vi kan säga att vi förstår vad som händer efter lansering. Vi lever i det varje dag med vår egen produkt.",
+    cta: "Se caset",
+  },
+
   auditCta: {
     title: "Osäker på var du ska börja?",
     description:
@@ -461,6 +471,16 @@ const en: typeof sv = {
     intro: "Who we are — two systems scientists who build our own products and client projects with the same care.",
     link: "More about us",
     roles: { anton: "Developer", nawid: "Design & development" },
+  },
+
+  ownProduct: {
+    tagline: "· Our own product ·",
+    title: "We don't just build for others",
+    paragraph1:
+      "seventyfive — a 75-day fitness challenge with workout logging, GPS tracking, and team features. We designed, built, and launched it ourselves, and keep running it with real users.",
+    paragraph2:
+      "That's why we can say we understand what happens after launch. We live it every day with our own product.",
+    cta: "See the case study",
   },
 
   auditCta: {

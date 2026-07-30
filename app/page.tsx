@@ -5,6 +5,7 @@ import Contact from "@/components/Contact";
 import CookieBanner from "@/components/CookieBanner";
 import FAQ from "@/components/FAQ";
 import TeamPreview from "@/components/TeamPreview";
+import OwnProduct from "@/components/OwnProduct";
 import AuditCTA from "@/components/AuditCTA";
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
       <main>
         <Hero />
         <TeamPreview />
+        <OwnProduct />
         <Work />
         <FAQ />
         <AuditCTA />
