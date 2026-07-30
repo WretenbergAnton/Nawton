@@ -274,6 +274,20 @@ const sv = {
     ctaLink: "Starta ett projekt",
   },
 
+  seventyfivePage: {
+    back: "Tillbaka",
+    tagline: "· Egen produkt ·",
+    title: "SeventyFive",
+    subtitle:
+      "En 75-dagars träningsutmaning som vi designade, byggde och lanserade själva — och som vi driver vidare med riktiga användare.",
+    paragraph1:
+      "seventyfive är vår egen mobilapp för 75 Hard-utmaningen, med passloggning, GPS-spårning, lagfunktioner och framstegsfoton. Vi äger hela resan: idé, design, utveckling och drift.",
+    paragraph2:
+      "Det är därför vi kan säga att vi förstår vad som händer efter lansering. Vi lever i det varje dag med vår egen produkt — samma noggrannhet ger vi till varje kundprojekt.",
+    ctaTitle: "Vill du bygga något liknande?",
+    ctaLink: "Starta ett projekt",
+  },
+
   howWeHelp: {
     tagline: "· Vår process ·",
     titleLine1: "Så jobbar vi",
@@ -600,6 +614,20 @@ const en: typeof sv = {
       "A selection of projects across web, mobile, and e-commerce — plus our own product. Every one built from scratch, no templates, no shortcuts.",
     visit: "Visit",
     ctaTitle: "Got a project in mind?",
+    ctaLink: "Start a project",
+  },
+
+  seventyfivePage: {
+    back: "Back",
+    tagline: "· Own product ·",
+    title: "SeventyFive",
+    subtitle:
+      "A 75-day fitness challenge we designed, built, and launched ourselves — and keep running with real users.",
+    paragraph1:
+      "seventyfive is our own mobile app for the 75 Hard challenge, with workout logging, GPS tracking, team features, and progress photos. We own the whole journey: idea, design, development, and operations.",
+    paragraph2:
+      "That's why we can say we understand what happens after launch. We live it every day with our own product — the same care goes into every client project.",
+    ctaTitle: "Want to build something similar?",
     ctaLink: "Start a project",
   },
 
